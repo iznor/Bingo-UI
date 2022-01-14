@@ -27,7 +27,7 @@ const home = () => {
 const edit = () => {
   return (
     <>
-      <div></div>
+      <form></form>
     </>
   );
 };
