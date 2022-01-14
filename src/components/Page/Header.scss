@@ -1,0 +1,36 @@
+header {
+    background-color: #ffd665;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    width: 100%;
+    height: 75px;
+    justify-content: start;
+    border-radius: 0px 0px 20px 20px;
+    margin: 0;
+    padding: 0;
+
+    button {
+        position: fixed;
+        margin-left: 30px;
+        padding: 0px;
+        background-image: url("../../assets/img/back.svg");
+        background-color: transparent;
+        background-size: cover;
+        border: none;
+        width: 35px;
+        height: 35px;
+    }
+
+    h1 {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 25px;
+        padding-top: 5px;
+        font-size: 40px; // border: 1px red solid;
+    }
+}
