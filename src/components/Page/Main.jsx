@@ -9,9 +9,9 @@ const button = (divId, title) => {
   );
 };
 
-function Main() {
+const home = () => {
   return (
-    <main>
+    <>
       <div className="row">
         {button("reserve", "Find")}
         {button("publish", "Add")}
@@ -20,6 +20,23 @@ function Main() {
         {button("edit", "Edit")}
         {button("history", "History")}
       </div>
+    </>
+  );
+};
+
+const edit = () => {
+  return (
+    <>
+      <div></div>
+    </>
+  );
+};
+
+function Main() {
+  return (
+    <main className="edit">
+      {/* {home()} */}
+      {edit()}
     </main>
   );
 }

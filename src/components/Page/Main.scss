@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-main {
+.home {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,3 +74,35 @@ main {
     }
 
 }
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 80vh;
+    row-gap: 30px;
+
+    div {
+        display: flex;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+    }
+}
+
+// .add {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     width: 100%;
+//     min-height: 80vh;
+//     row-gap: 30px;
+
+//     div {
+//         display: flex;
+//         width: 200px;
+//         height: 200px;
+//         background-color: black;
+//     }
+// }
