@@ -14,18 +14,51 @@ main {
         justify-content: right;
         // width: 100%;
         max-width: 800px;
-        max-height: 25vh;
-        border: 1px blue solid;
+        min-height: 160px;
         row-gap: 30px;
-        // gap: 20px;
+        border: 1px blue solid;
 
+        // gap: 20px;
         button {
+            border: 1px red solid;
             min-width: 160px;
             min-height: 160px;
             width: 25vh;
             height: 25vh;
-            padding: 20px;
+            // padding: 20px;
+
             // height: 100%;
+            div {
+                width: 60%;
+                height: 60%;
+                background-size: cover;
+                border: 1px red solid;
+            }
+
+            h1 {
+
+                border: 1px red solid;
+            }
+
+            #reserve {
+                background-image: url("../../assets/img/explore.svg");
+            }
+
+            #publish {
+                background-image: url("../../assets/img/add.svg");
+
+                &:hover {
+                    background-image: url("../../assets/img/add-alt.svg");
+                }
+            }
+
+            #edit {
+                background-image: url("../../assets/img/edit.svg");
+            }
+
+            #history {
+                background-image: url("../../assets/img/explore.svg");
+            }
         }
     }
 
