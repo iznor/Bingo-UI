@@ -1,4 +1,3 @@
-import backButton from "../../assets/img/back.svg";
 import "./Main.scss";
 
 const button = (divId, title) => {

@@ -1,18 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+@import "./variables.scss";
 
 * {
-    font-family: 'Josefin Slab', serif;
+    font-family: 'Dongle', sans-serif;
 }
 
 .page-wrap {
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    justify-content: center;
     // background-color: gray;
     // min-height: 812px;
     height: 100%;
     max-height: 100%;
     // width: 375px;
     width: 100%;
+    background-color: $base-background;
 
 }

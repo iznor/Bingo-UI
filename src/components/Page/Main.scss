@@ -1,47 +1,58 @@
+@import './variables.scss';
+
 main {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-    background-color: rgb(193, 248, 255);
+    min-height: 80vh;
     row-gap: 30px;
-    // height: 100%;
 
     .row {
         scroll-margin: 30px;
         display: flex;
         flex-direction: row;
-        justify-content: right;
-        // width: 100%;
-        max-width: 800px;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 515px;
         min-height: 160px;
-        row-gap: 30px;
-        border: 1px blue solid;
+        // border: 1px blue solid;
 
-        // gap: 20px;
         button {
-            border: 1px red solid;
+            // border: 1px red solid;
+            border-radius: 30px;
             min-width: 160px;
             min-height: 160px;
-            width: 25vh;
-            height: 25vh;
-            // padding: 20px;
+            width: 22vh;
+            height: 22vh;
+            border: none;
+            // padding: 60px;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            opacity: 0.9;
+            padding: 15px;
+            // background-color: rgb(237, 237, 245);
+            background-color: #ffd665;
 
-            // height: 100%;
             div {
                 width: 60%;
                 height: 60%;
                 background-size: cover;
-                border: 1px red solid;
+                // border: 1px red solid;
             }
 
             h1 {
-
-                border: 1px red solid;
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+                margin: 0;
+                justify-content: center;
+                width: 100%;
+                height: 30px;
+                font-size: 36px; // border: 1px red solid;
             }
 
             #reserve {
-                background-image: url("../../assets/img/explore.svg");
+                background-image: url("../../assets/img/find.svg");
             }
 
             #publish {
@@ -57,7 +68,7 @@ main {
             }
 
             #history {
-                background-image: url("../../assets/img/explore.svg");
+                background-image: url("../../assets/img/history.svg");
             }
         }
     }
