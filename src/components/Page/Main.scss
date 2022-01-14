@@ -1,0 +1,32 @@
+main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: rgb(193, 248, 255);
+    row-gap: 30px;
+    // height: 100%;
+
+    .row {
+        scroll-margin: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        // width: 100%;
+        max-width: 800px;
+        max-height: 25vh;
+        border: 1px blue solid;
+        row-gap: 30px;
+        // gap: 20px;
+
+        button {
+            min-width: 160px;
+            min-height: 160px;
+            width: 25vh;
+            height: 25vh;
+            padding: 20px;
+            // height: 100%;
+        }
+    }
+
+}

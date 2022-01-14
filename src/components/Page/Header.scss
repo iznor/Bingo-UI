@@ -1,0 +1,24 @@
+.head {
+    display: "flex";
+    flex-direction: row;
+    // align-items: "center";
+    // align-content: "center";
+    width: "100%";
+    // height: "75px";
+    // justify-content: "start";
+    // border: "1px black red";
+    background-color: antiquewhite;
+}
+
+button {
+    position: "absolute";
+    display: "inline-flex";
+    margin-left: "30px";
+    padding: "0px";
+}
+
+h1 {
+    // margin: "0px";
+    //   padding: "0px";
+    border: "1px solid black";
+}
