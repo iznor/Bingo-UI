@@ -8,10 +8,10 @@ function Main() {
   return (
     <>
       {/* <Home /> */}
-      {/* <Edit /> */}
+      <Edit />
       {/* <Add> */}
       {/* <Map /> */}
-      <AddDetails/>
+      {/* <AddDetails/> */}
       {/* </Add> */}
     </>
   );
