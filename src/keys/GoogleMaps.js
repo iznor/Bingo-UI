@@ -1,1 +1,0 @@
-export const myApiKey="AIzaSyDu1OeSCp0C2mX4IMGD_Rq39QnTDs_oAik";
