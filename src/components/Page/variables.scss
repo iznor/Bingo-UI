@@ -1,22 +1,5 @@
 $base-yellow: rgb(255, 214, 102);
 $base-background: rgb(244, 248, 250);
+$base-active:rgb(241, 241, 241);
+$base-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 
-// .main-wrapper {
-    //     display: flex;
-    //     flex-direction: column;
-    //     width: 100%;
-    //     row-gap: 30px;
-    //     min-height: 80vh;
-    //     justify-content: center;
-    // }
-
-$main-wrapper: ".main-wrapper";
-
-#{main-wrapper}{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    row-gap: 30px;
-    min-height: 80vh;
-    justify-content: center;
-}

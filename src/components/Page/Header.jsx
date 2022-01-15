@@ -1,9 +1,12 @@
 import "./Header.scss";
+import Add from "./headers/Add";
+import Profile from "./headers/Profile";
 function Header() {
   return (
     <header>
-      <button></button>
-      <h1>Bingo Parking</h1>
+      {/* <Login /> */}
+      {/* <Profile/> */}
+      <Add />
     </header>
   );
 }
