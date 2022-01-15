@@ -1,14 +1,14 @@
 import "./Main.scss";
 import Home from "./Home";
 import Edit from "./Edit";
-import Maps from "./Maps";
+import Map from "./Map";
 
 function Main() {
   return (
     <>
       {/* <Home /> */}
       {/* <Edit /> */}
-      <Maps />
+      <Map />
     </>
   );
 }
