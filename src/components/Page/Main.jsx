@@ -27,7 +27,16 @@ const home = () => {
 const edit = () => {
   return (
     <>
-      <form></form>
+      <div className="row">
+        {button("reserve", "Location")}
+        {button("publish", "Technical")}
+      </div>
+      <div className="row">
+        {button("edit", "Price")}
+        {button("history", "Dates")}
+      </div>
+       <h2>Is this parking lot available for renting?</h2>
+       <button className="saveButton"><h2>Save</h2></button>
     </>
   );
 };
