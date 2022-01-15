@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.edit-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 30px;
+    min-height: 80vh;
+    justify-content: center;
+
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: #181818;
+
+        h1 {
+            margin-left: 10px;
+            color: $base-yellow;
+        }
+    }
+
+}
