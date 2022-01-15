@@ -8,7 +8,9 @@ function Main() {
     <>
       {/* <Home /> */}
       {/* <Edit /> */}
+      {/* <Add> */}
       <Map />
+      {/* </Add> */}
     </>
   );
 }
