@@ -7,6 +7,7 @@ import React, { useEffect, useRef,useState } from "react";
 function Map({ options, onMount, className, onMountProps }) {
   const ref = useRef();
   const [map, setMap] = useState();
+  
   useEffect(() => {
     const onLoad = () =>
       setMap(new window.google.maps.Map(ref.current, options));
@@ -20,18 +21,32 @@ function Map({ options, onMount, className, onMountProps }) {
     } else onLoad();
   }, [options]);
   if (map && typeof onMount === `function`) onMount(map, onMountProps);
+
+  // function addMarkers(map, links) {
+  //   links.forEach((link, index) => {
+  //     const marker = new window.google.maps.Marker({
+  //       map,
+  //       position: link.coords,
+  //       label: `${index + 1}`,
+  //       title: link.title,
+  //     })
+  //     marker.addListener(`click`, () => {
+  //       window.location.href = link.url
+  //     })
+  //   })
+  // }
+
   return (
     <div
-      style={{ height: `60vh`, margin: `1em 0`, borderRadius: `0.5em` }}
+      style={{ height: `81vh`,width: `100%`, zIndex:`0`,marginTop: `2px`, borderRadius: `0` }}
       {...{ ref, className }}
-    />
+    className="map-wrapper"/>
   );
 }
 Map.defaultProps = {
-  options: {
-    center: { lat: 48, lng: 8 },
-    zoom: 5,
-  },
-};
+  options: {center: { lat: 32.0901, lng: 34.8036 },zoom: 12,},
+    // onMount: addMarkers, 
+    // onMountProps: linksComingFromSomewhere, 
+  };
 
 export default Map;
