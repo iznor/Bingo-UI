@@ -10,10 +10,10 @@ const locationActive = () => {
 };
 const DetailsActive = () => {
   return (
-      <>
+    <>
       <h1 className="">Location</h1>
       <h1 className="active">Details</h1>
-      </>
+    </>
   );
 };
 
@@ -21,8 +21,8 @@ function Add() {
   return (
     <div className="header-add">
       {/* {locationActive()} */}
-      {DetailsActive()} 
-      </div>
+      {DetailsActive()}
+    </div>
   );
 }
 
