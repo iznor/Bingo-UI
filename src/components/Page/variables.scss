@@ -1,2 +1,22 @@
 $base-yellow: rgb(255, 214, 102);
 $base-background: rgb(244, 248, 250);
+
+// .main-wrapper {
+    //     display: flex;
+    //     flex-direction: column;
+    //     width: 100%;
+    //     row-gap: 30px;
+    //     min-height: 80vh;
+    //     justify-content: center;
+    // }
+
+$main-wrapper: ".main-wrapper";
+
+#{main-wrapper}{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 30px;
+    min-height: 80vh;
+    justify-content: center;
+}
