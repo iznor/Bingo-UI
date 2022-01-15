@@ -7,11 +7,11 @@ import AddDetails from "./AddDetails";
 function Main() {
   return (
     <>
-      {/* <Home /> */}
+      <Home />
       {/* <Edit /> */}
       {/* <Add> */}
       {/* <Map /> */}
-      <AddDetails/>
+      {/* <AddDetails/> */}
       {/* </Add> */}
     </>
   );
