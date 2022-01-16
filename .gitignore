@@ -2,6 +2,8 @@
 
 # api keys
 /src/keys
+# temp files
+/src/assets/img/gifs
 # dependencies
 /node_modules
 /.pnp
