@@ -5,8 +5,8 @@ import { useState } from "react";
 
 function Footer() {
   return (
-    <LoginFooter/>
-    // <HomeFooter/>
+    // <LoginFooter/>
+    <HomeFooter/>
   );
 }
 
