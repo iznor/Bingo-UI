@@ -23,6 +23,7 @@ import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles";
+import {dark} from "./mapStyles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
