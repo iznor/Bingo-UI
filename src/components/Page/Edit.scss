@@ -12,9 +12,12 @@
     width: 450px;
     height: 600px;
     background-color: rgb(218, 218, 218);
-    // background: #f9fafc00;
     border-radius: 25px;
     margin-top: 30px;
+    // background-image: url("https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,g=0.5x0.5,f=auto/6a4b4c54f1d0b43c03955a1c95aea8a1.png");
+    background-size: 450px 600px;
+    background-image: url("../../assets/img/car-parking-icon.jpeg");
+    background-repeat: no-repeat;
     }
     .edit-title{
         margin-top: 10px;
@@ -50,7 +53,6 @@
         box-shadow: 0px 4.2069px 4.2069px rgba(255, 102, 71, 0.25);
     }
     .plus-icon{
-        // position:absolute;
         color: #FFFFFF;
         margin-top: 6px;
         font-size: 23px;
@@ -59,7 +61,6 @@
         width: 440px;
         height: 508px;
         margin-top: 10px;
-        // background-color: #F86549;
 
         section{
             margin-left: 40px;
@@ -68,7 +69,6 @@
     }
 
     .input-label-from{
-        // background-color: aquamarine;
         width: 360px;
         height: 75px;
     }
@@ -83,7 +83,5 @@
         border-radius: 4px;
         border: 2.10345px solid #FFFFFF;
      }
-     
-
     
 }
