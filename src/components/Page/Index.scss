@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+.index {
+        display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    row-gap: 30px;
+    min-height: 100vh;
+    justify-content: end;
+    background-image: url('../../assets/img/index9.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(250, 250, 250);
+    button {
+        min-width: 250px;
+        height: 75px;
+        border-radius: 50px;
+        // background-color: #181818;
+        background-color: $base-yellow;
+        color: #181818;
+        box-shadow: $base-shadow;
+        border: none;
+        font-size: 42px;
+        &:last-child{
+            margin-bottom: 50px;
+        }
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+}
