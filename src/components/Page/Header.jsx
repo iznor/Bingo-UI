@@ -6,8 +6,8 @@ import Profile from "./headers/Profile";
 function Header() {
   return (
     <>
-      <IndexHeader />
-      {/* <Profile/> */}
+      {/* <IndexHeader /> */}
+      <Profile/>
       {/* <HomeHeader /> */}
       {/* <Add /> */}
     </>
