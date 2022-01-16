@@ -9,7 +9,7 @@ import AddDetails from "./AddDetails";
 function Main() {
   return (
     <>
-      <Index />
+      <Index/>
       {/* <Login /> */}
       {/* <Home /> */}
       {/* <Edit /> */}
