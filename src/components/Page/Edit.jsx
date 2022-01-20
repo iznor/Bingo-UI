@@ -28,14 +28,16 @@ function Edit() {
                         <p>Image</p>
                         <input type="text" id="fname" name="fname" placeholder="Image url" /><br></br>
                     </section>
+                    <div class="row">
                     <button className="approval-icon">
                     <ImCheckmark2 className='plus-icon'/>
                    </button>
                    <button className="cancel-icon">
                     <MdOutlineCancel className='plus-icon'/>
                   </button>
-            </div>
-            </div>
+                  </div>
+              </div>
+          </div>
     </div>
   );
 }
