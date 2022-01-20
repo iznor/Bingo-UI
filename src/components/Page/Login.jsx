@@ -1,7 +1,7 @@
 import "./Login.scss";
 
 function Login() {
-  console.log("LOGIN");
+  //AYHAM => implementation: what happens when user clicks "login"?
   return (
     <div className="index login">
       <form>
