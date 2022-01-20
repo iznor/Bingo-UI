@@ -8,15 +8,12 @@
     min-height: 80vh;
     justify-content: center;
 
+
     .edit-parking{
-    width: 450px;
-    height: 600px;
+    width: 80%;
     background-color: rgb(218, 218, 218);
     border-radius: 25px;
     margin-top: 30px;
-    // background-size: 450px 600px;
-    // background-image: url("../../assets/img/car-parking-icon.jpeg");
-    // background-repeat: no-repeat;
     }
     .edit-title{
         margin-top: 10px;
@@ -64,19 +61,22 @@
         section{
             margin-left: 40px;
             margin-top: 25px;
+            background-color: aquamarine;
           }
     }
 
     .input-label-from{
-        width: 360px;
+        width: 80%;
         height: 75px;
+        background-color: #FF9900;
     }
      .input-label-from p{
         color: #353646;
         opacity: 0.5;
      }
      .input-label-from input{
-         width: 350px;
+         width: 80%;
+         background-color: aqua;
         height: 35px;
         background: #F6F7FB;
         border-radius: 4px;
