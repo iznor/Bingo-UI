@@ -1,6 +1,7 @@
 import "./Login.scss";
 
 function Login() {
+  console.log("LOGIN");
   return (
     <div className="index login">
       <form>

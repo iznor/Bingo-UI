@@ -32,6 +32,9 @@
                 padding: 15px;
                 // background-color: rgb(237, 237, 245);
                 background-color: $base-yellow;
+                &:hover{
+                    cursor: pointer;
+                }
 
                 div {
                     width: 60%;

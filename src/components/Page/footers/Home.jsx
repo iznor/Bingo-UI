@@ -3,9 +3,9 @@ import "../Footer.scss";
 const buttonsMain = () => {
   return (
     <>
-      <button id="reserved"></button>
-      <button id="home"></button>
-      <button id="profile"></button>
+      <a href="/reservations"><button id="reserved"></button></a>
+      <a href="/home"><button id="home"></button></a>
+      <a href="/profile"><button id="profile"></button></a>
     </>
   );
 };

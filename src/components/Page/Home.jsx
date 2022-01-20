@@ -1,5 +1,6 @@
 import "./Main.scss";
 import "./Home.scss";
+import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
 
 const button = (divId, title) => {
   return (
@@ -14,12 +15,12 @@ function Home() {
   return (
     <div className="home-page">
       <div className="row">
-        {button("reserve", "Find")}
-        {button("publish", "Add")}
+        <Link to={"/find"}>{button("reserve", "Find")}</Link>
+        <Link to={"/add"}>{button("publish", "Add")}</Link>
       </div>
       <div className="row">
-        {button("edit", "Edit")}
-        {button("history", "History")}
+        <Link to={"/edit"}>{button("edit", "Edit")}</Link>
+        <Link to={"/history"}>{button("history", "History")}</Link>
       </div>
     </div>
   );
