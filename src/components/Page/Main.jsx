@@ -9,12 +9,12 @@ import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom";
 import App from "../../App";
 
-function Main() {
+function Main({Login_to_our_project , error}) {
   return (
     <>
       <Routes>
         <Route exact path={"/"} component={Index} element={<Index/>}></Route>
-        <Route exact path={"/login"} component={Login} element={<Login/>}></Route>
+        <Route exact path={"/login"} component={Login} element={<Login Login_to_our_project={Login_to_our_project} error ={error}/>}></Route>
         <Route exact path={"/home"} component={Home} element={<Home/>}></Route>
         <Route exact path={"/edit"} component={Edit} element={<Edit/>}></Route>
         <Route exact path={"/add"} component={Map} element={<Map/>}></Route>

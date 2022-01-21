@@ -10,11 +10,11 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 
-function Page() {
+function Page({Login_to_our_project , error}) {
   return (
     <div className="page-wrap">
         <Header></Header>
-        <Main></Main>
+        <Main Login_to_our_project={Login_to_our_project} error ={error} ></Main>
         <Footer></Footer>
       </div>
 
