@@ -5,13 +5,15 @@ import Home from "./components/Page/Home";
 import {useState } from "react";
 import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 
-
 function App() {
 
   const adminUser = {
     email : "ayham.huss@gmail.com",
-    password : "ayham123"
+    password : "ayham123",
   }
+
+
+
 
   const [user , setUser] = useState({email : "" , password : ""})
   const [error , setError] = useState("")
