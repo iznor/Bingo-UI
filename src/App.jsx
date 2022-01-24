@@ -7,29 +7,15 @@ import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 
 function App() {
 
-  const adminUser = {
-    email : "ayham.huss@gmail.com",
-    password : "ayham123",
-  }
-
-
-
-
   const [user , setUser] = useState({email : "" , password : ""})
   const [error , setError] = useState("")
-
-
+  
   const Login_to_our_project = details => {
     console.log(details);
-    if(details.email == adminUser.email){
-      console.log("Logged in :)");
       setUser ({
         email : details.email ,
         password : details.password ,
       });
-    }else{
-      console.log("Details do not match!")
-    }
   }
   // const [signup, setSignup] = useState();
   // const [login, setLogin] = useState();
