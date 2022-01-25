@@ -1,5 +1,5 @@
 
-function HomeHeader() {
+function AddHeader() {
   return (
     <header>
       <h1 style={{fontSize:"46px"}}>Add Your Parking</h1>
@@ -7,4 +7,4 @@ function HomeHeader() {
   );
 }
 
-export default HomeHeader;
+export default AddHeader;

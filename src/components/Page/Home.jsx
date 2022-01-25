@@ -19,7 +19,7 @@ function Home() {
         <Link to={"/add"}>{button("publish", "Add")}</Link>
       </div>
       <div className="row">
-        <Link to={"/edit"}>{button("edit", "Edit")}</Link>
+        <Link to={"/my"}>{button("edit", "Manage")}</Link>
         <Link to={"/history"}>{button("history", "History")}</Link>
       </div>
     </div>

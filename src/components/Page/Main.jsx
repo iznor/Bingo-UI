@@ -2,7 +2,7 @@ import "./Main.scss";
 import Index from "./Index";
 import Login from "./Login";
 import Home from "./Home";
-import Edit from "./Edit";
+import Edit from "./My";
 import Map from "./Map";
 import AddDetails from "./AddDetails";
 import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
