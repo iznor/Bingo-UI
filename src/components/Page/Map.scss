@@ -1,7 +1,14 @@
 @import './variables.scss';
 // .map-wrapper {
 // }
-
+.map-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    height: 79%;
+    margin-top: 10px;
+    // border: 1px solid red;
+}
 .search{
     display: flex;
     justify-content: center;
@@ -15,6 +22,7 @@
         font-size: 24px;
         height: 50px;
         width: 91vw;
+        max-width: 1270px;
         border: none;
         &:focus{
             font-size: 24px;

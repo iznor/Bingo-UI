@@ -27,8 +27,12 @@ import {dark} from "./mapStyles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
   height: "70vh",
-  width: "100vw",
+  width: "100%",
+  maxWidth: '1300px',
+  justifyContent: 'baseline'
 };
 const options = {
   styles: mapStyles,
@@ -73,9 +77,8 @@ export default function App() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div className="map-container">
       {/* <Locate panTo={panTo} /> */}
-
       <Search panTo={panTo} />
       <GoogleMap
         id="map"

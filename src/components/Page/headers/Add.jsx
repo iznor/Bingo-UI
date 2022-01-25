@@ -1,29 +1,10 @@
-import "./Add.scss";
 
-const locationActive = () => {
+function HomeHeader() {
   return (
-    <>
-      <h1 className="active">Location</h1>
-      <h1 className="">Details</h1>
-    </>
-  );
-};
-const DetailsActive = () => {
-  return (
-    <>
-      <h1 className="">Location</h1>
-      <h1 className="active">Details</h1>
-    </>
-  );
-};
-
-function Add() {
-  return (
-    <div className="header-add">
-      {/* {locationActive()} */}
-      {DetailsActive()}
-    </div>
+    <header>
+      <h1 style={{fontSize:"46px"}}>Add Your Parking</h1>
+    </header>
   );
 }
 
-export default Add;
+export default HomeHeader;

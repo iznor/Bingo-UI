@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import "../Footer.scss";
 
 const buttonsMain = () => {
   return (
     <>
-      <a href="/reservations"><button id="reserved"></button></a>
-      <a href="/home"><button id="home"></button></a>
-      <a href="/profile"><button id="profile"></button></a>
+    <Link to={"/reservations"}><button id="reserved"></button></Link>
+    <Link to={"/home"}><button id="home"></button></Link>
+    <Link to={"/profile"}><button id="profile"></button></Link>
     </>
   );
 };
