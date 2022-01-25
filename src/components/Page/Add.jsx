@@ -71,7 +71,7 @@ function GoogleMapsSearch() {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            placeholder="Search for a parking"
+            placeholder="Find address"
           />
   
           <ComboboxPopover>
@@ -119,7 +119,7 @@ function Add() {
           </section>
           <section className="input-label-from">
             <p>End Date</p>
-            <input type="date" id="dateEnd" name="dateEnd" />
+            <input type="date" id="dateEnd" name="dateEnd" min={today}/>
           </section>
           <section className="input-label-from">
             <p>Price</p>
