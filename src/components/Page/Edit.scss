@@ -70,6 +70,7 @@
                 outline-color: unset;
                 text-align: left;
                 padding-left: 10px;
+                padding-right: 10px;
                 border-radius: 5px;
                 &::placeholder {
                     font-size: 24px;
@@ -77,8 +78,8 @@
                   }
                 &:focus{
                     color: black;
-                    border: unset;
-                    outline-color: unset;
+                        border: none;
+                        outline: none;
                 }
             }
             ::-webkit-calendar-picker-indicator{margin-right: 3px;}
