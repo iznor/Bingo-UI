@@ -135,7 +135,7 @@ export default function App() {
             onCloseClick={() => {
               setSelected(null);
             }} 
-           className="testy">
+           >
             <div className="info-box">
               <h2 style={{ display: "flex", justifyContent: "center" }}>
                 <img
