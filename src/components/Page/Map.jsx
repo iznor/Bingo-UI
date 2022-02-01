@@ -52,6 +52,10 @@ export default function App() {
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
+  //delete later!
+  const ido = [{lat: 42.245, lng: 42.87}]
+
+
   const onMapClick = React.useCallback((e) => {
     setMarkers((current) => [
       ...current,

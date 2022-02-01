@@ -1,9 +1,6 @@
 //PARK CARD -> NOT HOME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-import "./Main.scss";
-import "./Home.scss";
-import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
-
+import {Link} from "react-router-dom";
 const card = (address, dates) => {
   return (
     <div className="card">
@@ -17,7 +14,7 @@ const card = (address, dates) => {
 function ParkCard(address, dates) {
   return (
       <div className="card-row">
-        <Link to={"/my/edit"}>{card("Even Gabirol 101, Tel Aviv", "15/01/22-22/01/22")}</Link>
+        <Link to={"/manage/edit"}>{card("Even Gabirol 101, Tel Aviv", "15/01/22-22/01/22")}</Link>
       </div>
   );
 }

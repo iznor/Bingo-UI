@@ -1,9 +1,5 @@
 import "./Page.scss";
-import "./Header";
 import App from "../../App";
-import Main from "./Main";
-import Footer from "./Footer";
-import Header from "./Header";
 import { useContext, useState, useMemo } from "react";
 import react from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -12,14 +8,11 @@ import LoginFooter from "./footers/Login";
 import LoginHeader from "./headers/Index";
 import Index from "./Index";
 import Login from "./Login";
-import HomeHeader from "./headers/Home";
-import AddHeader from "./headers/Add";
-import MyHeader from "./headers/My";
-import EditHeader from "./headers/Edit";
-import HomeFooter from "./footers/Home";
+import Header from "./headers/Header";
+import Footer from "./footers/Footer";
 import Home from "./Home";
 import Map from "./Map";
-import My from "./My";
+import Manage from "./Manage";
 import Add from "./Add";
 import EditForm from "./EditForm";
 
@@ -51,9 +44,9 @@ function Page() {
           path="/home"
           element={
             <>
-              <HomeHeader key={"HomeHeader"} />
+              <Header key={"Header"} />
               <Home />
-              <HomeFooter key={"HomeFooter"} />
+              <Footer key={"Footer"} />
             </>
           }
         ></Route>
@@ -61,27 +54,27 @@ function Page() {
           path="/add"
           element={
             <>
-              <AddHeader key={"AddHeader"} />
+              <Header key={"Header"} />
               <Add />
-              <HomeFooter key={"HomeFooter"} />
+              <Footer key={"Footer"} />
             </>
           }
         ></Route>
         <Route
-          path="/my"
+          path="/manage"
           element={
             <>
-              <MyHeader key={"MyHeader"} />
-              <My />
-              <HomeFooter key={"HomeFooter"} />
+              <Header key={"Header"} />
+              <Manage />
+              <Footer key={"Footer"} />
             </>
           }
         ></Route>
-        <Route path="/my/edit" element={
+        <Route path="/manage/edit" element={
             <>
-            <EditHeader key={"EditHeader"} />
+            <Header key={"Header"} />
             <EditForm />
-            <HomeFooter key={"HomeFooter"} />
+            <Footer key={"Footer"} />
           </>
       }
         ></Route>
@@ -89,9 +82,19 @@ function Page() {
           path="/find"
           element={
             <>
-              <HomeHeader key={"HomeHeader"} />
+              <Header key={"Header"} />
               <Map />
-              <HomeFooter key={"HomeFooter"} />
+              <Footer key={"Footer"} />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Header key={"Header"} />
+              {/* <Map /> */}
+              <Footer key={"Footer"} />
             </>
           }
         ></Route>

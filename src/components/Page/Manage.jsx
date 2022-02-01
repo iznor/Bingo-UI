@@ -1,13 +1,13 @@
-import "./My.scss";
+import "./Manage.scss";
 import "./Edit.scss";
 import "./ParkCard.scss";
 import ParkCard from "./ParkCard.jsx";
 
-function My({ COMPONENT }) {
+function Manage({ COMPONENT }) {
   return (
     <div className="my-parkings">
       <ParkCard/>
     </div>
   );
 }
-export default My;
+export default Manage;

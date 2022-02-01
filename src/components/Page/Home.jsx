@@ -1,5 +1,3 @@
-import "./Main.scss";
-import "./Home.scss";
 import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
 
 const button = (divId, title) => {
