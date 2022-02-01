@@ -8,6 +8,15 @@
     height: 79%;
     margin-top: 10px;
     // border: 1px solid red;
+    .info-box{
+        color: red;
+        background-color: aqua;
+        border: 1px red solid;
+    }
+    .testy{
+        border: 1px red solid;
+
+    }
 }
 .search{
     display: flex;
