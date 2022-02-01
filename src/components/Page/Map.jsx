@@ -62,14 +62,7 @@ export default function App() {
   ];
 
   const onMapClick = React.useCallback((e) => {
-    // setMarkers((current) => [
-    //   ...current,
-    //   {
-    //     lat: e.latLng.lat(),
-    //     lng: e.latLng.lng(),
-    //     time: new Date(),
-    //   },
-    // ]);
+    setSelected(null);
   }, []);
 
   const mapRef = React.useRef();
@@ -130,22 +123,21 @@ export default function App() {
         ))}
 
         {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => {
-              setSelected(null);
-            }} 
-           >
-            <div className="info-box">
-              <h2 style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  src="https://www.ariseiip.com/wp-content/uploads/2021/06/parking.svg"
-                  alt="parking"
-                  style={{ width: "15px", height: "15px", display: "flex" }}
-                />
-                Available!
-              </h2>
-              <p>lat:{selected.lat}lng:{selected.lng}</p>
+              <InfoWindow
+                position={{ lat: selected.lat, lng: selected.lng }}
+                onCloseClick={() => {
+                  setSelected(null);
+                }}
+               >
+          <div className="info-box">
+              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>Street name, City</h2>
+              <p style={{fontSize:"21px", paddingLeft:"25px" }}>Start Date - End Date</p>
+              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>Price $</h2>
+              <div className="h1-cont">
+              <button className="bingo-button">
+                bingo
+              </button>
+              </div>
             </div>
           </InfoWindow>
         ) : null}
