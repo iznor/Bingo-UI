@@ -152,7 +152,7 @@ function Locate({ panTo }) {
       className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
-          (position) =>{
+          (position) => {
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
