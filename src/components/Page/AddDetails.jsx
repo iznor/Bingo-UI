@@ -1,4 +1,4 @@
-import "./Main.scss";
+// import "./Main.scss";
 import "./AddDetails.scss";
 
 function AddDetails() {
