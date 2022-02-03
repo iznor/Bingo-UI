@@ -23,12 +23,16 @@ import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles";
-import {dark} from "./mapStyles";
+import { dark } from "./mapStyles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
+  display: "flex",
+  flexDirection: "column",
   height: "70vh",
-  width: "100vw",
+  width: "100%",
+  maxWidth: "1300px",
+  justifyContent: "baseline",
 };
 const options = {
   styles: mapStyles,
@@ -48,20 +52,38 @@ export default function App() {
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
+  //delete later -> GET this from DB
+  const parkingData = [
+    { id: 1, lat: 32.0901, lng: 34.8036 },
+    { id: 2, lat: 32.123, lng: 34.891 },
+    { id: 3, lat: 32.1009, lng: 34.88036 },
+    { id: 4, lat: 32.2003, lng: 34.87836 },
+    { id: 5, lat: 32.3102, lng: 34.90036 },
+  ];
+
   const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
+    setSelected(null);
   }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
+    //load all parking slots from database
+    parkingData.forEach((e) => {
+      const currParkingId = Number(e.id);
+      const currName = Number(e.name);
+      const currLat = Number(e.lat);
+      const currLng = Number(e.lng);
+      setMarkers((current) => [
+        ...current,
+        {
+          id: currParkingId,
+          lat: currLat,
+          lng: currLng,
+        },
+      ]);
+      return;
+    });
   }, []);
 
   const panTo = React.useCallback(({ lat, lng }) => {
@@ -73,10 +95,9 @@ export default function App() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
-      {/* <Locate panTo={panTo} /> */}
-
+    <div className="map-container">
       <Search panTo={panTo} />
+      {/* <Locate panTo={panTo} /> */}
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -103,22 +124,21 @@ export default function App() {
         ))}
 
         {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => {
-              setSelected(null);
-            }}
-          >
-            <div>
-              <h2 style={{display:"flex", justifyContent:"center"}}>
-                <img
-                  src="https://www.ariseiip.com/wp-content/uploads/2021/06/parking.svg"
-                  alt="parking"
-                  style={{ width: "15px", height: "15px", display:"flex"}}
-                />
-                Available!
-              </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
+              <InfoWindow
+                position={{ lat: selected.lat, lng: selected.lng }}
+                onCloseClick={() => {
+                  setSelected(null);
+                }}
+               >
+          <div className="info-box">
+              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>Street name, City</h2>
+              <p style={{fontSize:"21px", paddingLeft:"25px" }}>Start Date - End Date</p>
+              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>Price $</h2>
+              <div className="h1-cont">
+              <button className="bingo-button">
+                bingo
+              </button>
+              </div>
             </div>
           </InfoWindow>
         ) : null}
