@@ -23,7 +23,6 @@ function Login({ Login_to_our_project, error }) {
     if (obj.email == details.email && obj.password == details.password) {
       console.log("SUCCESS");
       window.location="/find";
-      <Link to={"/find"}><h1>alla hu akbar</h1></Link>
     } else {
       console.log("FAIL");
     }
