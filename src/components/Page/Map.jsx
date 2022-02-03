@@ -70,13 +70,14 @@ export default function App() {
     mapRef.current = map;
     //load all parking slots from database
     parkingData.forEach((e) => {
-      const currId = Number(e.id);
+      const currParkingId = Number(e.id);
+      const currName = Number(e.name);
       const currLat = Number(e.lat);
       const currLng = Number(e.lng);
       setMarkers((current) => [
         ...current,
         {
-          id: currId,
+          id: currParkingId,
           lat: currLat,
           lng: currLng,
         },

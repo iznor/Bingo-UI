@@ -16,6 +16,7 @@ import Manage from "./Manage";
 import Add from "./Add";
 import EditForm from "./EditForm";
 
+
 function Page() {
   return (
     <div className="page-wrap">
@@ -35,7 +36,7 @@ function Page() {
           element={
             <>
               <LoginHeader key={"loginHeader"} />
-              <Login />
+              <Login/>
               <LoginFooter key={"loginFooter"} />
             </>
           }
@@ -104,4 +105,3 @@ function Page() {
 }
 
 export default Page;
-//look for react switch / router
