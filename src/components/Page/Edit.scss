@@ -1,0 +1,109 @@
+@import './variables.scss';
+
+.edit-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    
+    // background-color: #353646;
+    .edit-title {
+        width: 100%;
+        // height: 34px;
+        text-align: center;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        // line-height: 34px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        color: #000001;
+        text-shadow: 0px 2px 80px #FFFFFF;
+    }
+    
+    .edit-parking {
+        margin-top: 0px;
+        padding-top: 0px;
+        width: 80%;
+        border-radius: 25px;
+        max-width: 700px;
+        max-height: 400px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{width:7px;}
+        &::-webkit-scrollbar-track {
+            // background: $base-yellow;
+            background: rgb(219, 226, 230);
+          }
+        &::-webkit-scrollbar-thumb {
+            background: $base-yellow;
+          }
+        &::-webkit-scrollbar-thumb:hover {
+        background: rgb(49, 49, 49);
+        }
+        // scroll-behavior: smooth;
+    }        
+    .form-editing {
+        font-size: 26px;
+        // border: red solid 1px;
+        &:first-child{
+            padding-top: 5px;
+        }
+        &:last-child{
+            padding-bottom: 20px;
+        }
+        .input-label-from p {
+                color: black;
+                // color: rgb(196, 199, 201);
+                width: 80%;
+                max-width: 600px;
+                text-align: start;
+                margin-top: 0px;
+            }
+            .input-label-from input {
+                font-size: 26px;
+                width: 77%;
+                max-width: 600px;
+                justify-content: right;
+                border: unset;
+                outline-color: unset;
+                text-align: left;
+                padding-left: 10px;
+                padding-right: 10px;
+                border-radius: 5px;
+                &::placeholder {
+                    font-size: 24px;
+                    color: rgb(196, 199, 201);
+                  }
+                &:focus{
+                    color: black;
+                        border: none;
+                        outline: none;
+                }
+            }
+            ::-webkit-calendar-picker-indicator{margin-right: 3px;}
+        }
+    }
+    .row {
+        display: flex;
+        width: 90%;
+        max-width: 500px;
+        margin-top: 10px;
+        z-index: 1;
+
+        .approval-icon, .cancel-icon {
+            margin-top: 10px;
+            width: 42px;
+            background: black;
+            border-radius: 50%;
+            border: 2.10345px solid rgb(29, 29, 29);
+            box-shadow: 0px 4.2069px 4.2069px rgba(0, 0, 0, 0.25);
+        }
+        .plus-icon {
+            color: $base-yellow;
+            margin-top: 6px;
+            font-size: 23px;
+        }
+
+}

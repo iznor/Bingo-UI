@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.my-parkings {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}

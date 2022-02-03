@@ -1,0 +1,68 @@
+@import "../variables.scss";
+
+footer {
+    background-color: #ffd665;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    justify-content: space-between;
+    border-radius: 20px 20px 0px 0px;
+    z-index: 1;
+
+    .container {
+
+        display: flex;
+        align-items: center;
+        width: 83%;
+        height: 100%;
+        justify-content: space-between;
+        margin-top: 3px;
+        max-width: 800px;
+
+        button {
+            width: 35px;
+            height: 35px;
+            background-size: cover;
+            border: none;
+            opacity: 0.85;
+            background-color: transparent;
+            &:hover{
+                cursor: pointer;
+                background-color: #ffecade7;
+                box-shadow: #fffefcf8 0px 0px 30px 5px;
+            }
+        }
+        
+        #reserved-icon {
+            border-radius: 80%;
+            background-image: url('../../../assets/img/reservations.svg');
+        }
+        
+        #home-icon {
+
+            background-image: url('../../../assets/img/home.svg');
+        }
+
+        #find-icon {
+            border-radius: 80%;
+            background-image: url('../../../assets/img/find.svg');
+        }
+
+        #add-icon {
+            border-radius: 80%;
+            background-image: url('../../../assets/img/add.svg');
+        }
+
+        #manage-icon {
+            background-image: url('../../../assets/img/edit.svg');
+        }
+
+        #profile-icon {
+            background-image: url('../../../assets/img/profile.svg');
+        }
+    }
+
+}
