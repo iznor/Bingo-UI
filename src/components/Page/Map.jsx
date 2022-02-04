@@ -1,6 +1,8 @@
 import React from "react";
 import "./Map.scss";
 import { myApiKey } from "../../keys/GoogleMaps";
+import axios from "axios";
+import { get } from "mongoose";
 
 import {
   GoogleMap,
@@ -24,6 +26,7 @@ import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles";
 import { dark } from "./mapStyles";
+import { MdReportGmailerrorred } from "react-icons/md";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -51,8 +54,33 @@ export default function App() {
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
+  const [post, setPost] = React.useState(null);
 
+  // const ayham;
+  // const [notes, getNotes] = React.useState('');
+  const url =  "http://localhost:8080/api/parkings";
   //delete later -> GET this from DB
+
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+    if (post){
+      console.log("hello");
+      post.forEach((e) => {
+        const currParkingId = Number(e.parkingId);
+        const currName = (e.firstName);
+        const currLat = Number(e.location.lat);
+        const currLng = Number(e.location.lng);
+        console.log(currParkingId);
+        console.log(currName);
+        console.log(currLat);
+        console.log(currLng);
+      });
+    }
+    
   const parkingData = [
     { id: 1, lat: 32.0901, lng: 34.8036 },
     { id: 2, lat: 32.123, lng: 34.891 },
