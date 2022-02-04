@@ -52,6 +52,7 @@ export default function App() {
     googleMapsApiKey: myApiKey,
     libraries,
   });
+  
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
   const [post, setPost] = React.useState(null);
@@ -61,25 +62,35 @@ export default function App() {
   const url =  "http://localhost:8080/api/parkings";
   //delete later -> GET this from DB
 
-  React.useEffect(() => {
-    axios.get(url).then((response) => {
+ const ayham = React.useEffect(() => {
+    console.log("sss");
+     axios.get(url).then((response) => {
+      console.log("sss1");
       setPost(response.data);
+      console.log(response.data);
+      const sett = response.data;
+      console.log(sett);
     });
+    console.log("hello");
+    console.log("hello212121");
+    if (post){
+      // console.log("hello");
+      // post.forEach((e) => {
+      //   const currParkingId = Number(e.parkingId);
+      //   const currName = (e.firstName);
+      //   const currLat = Number(e.location.lat);
+      //   const currLng = Number(e.location.lng);
+      //   console.log(currParkingId);
+      //   console.log(currName);
+      //   console.log(currLat);
+        console.log("currLng");
+      };
   }, []);
 
-    if (post){
-      console.log("hello");
-      post.forEach((e) => {
-        const currParkingId = Number(e.parkingId);
-        const currName = (e.firstName);
-        const currLat = Number(e.location.lat);
-        const currLng = Number(e.location.lng);
-        console.log(currParkingId);
-        console.log(currName);
-        console.log(currLat);
-        console.log(currLng);
-      });
-    }
+  
+
+
+    
     
   const parkingData = [
     { id: 1, lat: 32.0901, lng: 34.8036 },
@@ -95,6 +106,18 @@ export default function App() {
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
+   
+    // axios.get(url).then((response) => {
+    //   setPost(response.data);
+    //   console.log("aascc");
+    //   console.log(response.data);
+    //   const newParking = response.data;
+    //   console.log(post);
+    //   console.log(newParking);
+    // });
+
+    // console.log(post);
+    // console.log(newParking);
     mapRef.current = map;
     //load all parking slots from database
     parkingData.forEach((e) => {
@@ -131,6 +154,7 @@ export default function App() {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
+        ayham={ayham}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
