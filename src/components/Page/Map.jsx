@@ -62,32 +62,27 @@ export default function App() {
   const url =  "http://localhost:8080/api/parkings";
   //delete later -> GET this from DB
 
- const ayham = React.useEffect(() => {
-    console.log("sss");
-     axios.get(url).then((response) => {
-      console.log("sss1");
+    React.useEffect(() => {
+    axios.get(url).then((response) => {
       setPost(response.data);
-      console.log(response.data);
-      const sett = response.data;
-      console.log(sett);
     });
-    console.log("hello");
-    console.log("hello212121");
-    if (post){
-      // console.log("hello");
-      // post.forEach((e) => {
-      //   const currParkingId = Number(e.parkingId);
-      //   const currName = (e.firstName);
-      //   const currLat = Number(e.location.lat);
-      //   const currLng = Number(e.location.lng);
-      //   console.log(currParkingId);
-      //   console.log(currName);
-      //   console.log(currLat);
-        console.log("currLng");
-      };
   }, []);
 
-  
+
+    if (post){
+      // console.log("hello");
+      post.forEach((e) => {
+        const currParkingId = Number(e.parkingId);
+        const currLat = Number(e.location.lat);
+        const currLng = Number(e.location.lng);
+        console.log(currParkingId);
+        console.log(currLat);
+       });
+      };
+
+
+      // console.log(currParkingId);
+ 
 
 
     
@@ -105,19 +100,11 @@ export default function App() {
   }, []);
 
   const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
-   
-    // axios.get(url).then((response) => {
-    //   setPost(response.data);
-    //   console.log("aascc");
-    //   console.log(response.data);
-    //   const newParking = response.data;
-    //   console.log(post);
-    //   console.log(newParking);
-    // });
+  const onMapLoad = React.useCallback((map,post) => {
 
-    // console.log(post);
-    // console.log(newParking);
+    if(post){
+      console.log("hello");
+    }
     mapRef.current = map;
     //load all parking slots from database
     parkingData.forEach((e) => {
@@ -144,7 +131,8 @@ export default function App() {
 
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
-
+  console.log("hello111");
+  console.log(post);
   return (
     <div className="map-container">
       <Search panTo={panTo} />
@@ -154,7 +142,6 @@ export default function App() {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
-        ayham={ayham}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
