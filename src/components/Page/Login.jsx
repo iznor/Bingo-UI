@@ -15,12 +15,12 @@ function Login({ Login_to_our_project, error }) {
     e.preventDefault();
     const datab = await axios({
       method: "Post",
-      url: "http://localhost:8080/api/users/login",
+      url: "https://bingo-parking.herokuapp.com/api/users/login",
       data: { email: details.email, password: details.password },
     });
     const data = JSON.stringify(datab.data);
     const obj = JSON.parse(data);
-    if (obj.email == details.email && obj.password == details.password) {
+    if (obj.email === details.email && obj.password === details.password) {
       console.log("SUCCESS");
       window.location="/find";
     } else {
