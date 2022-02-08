@@ -59,6 +59,8 @@ function GoogleMapsSearch() {
             //save the chosen address as latlng
             chosenLat=lat;
             chosenLng=lng;
+            //print lat-lng
+            console.log(chosenLat, chosenLng);
         } catch (error) {
             console.log("😱 Error: ", error);
       }
