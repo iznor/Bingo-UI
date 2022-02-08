@@ -56,7 +56,7 @@ export default function App() {
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
-  const url =  "http://localhost:8080/api/parkings";
+  const url =  "https://bingo-parking.herokuapp.com/api/parkings";
 
   
 
@@ -69,12 +69,13 @@ export default function App() {
     mapRef.current = map;
     //load all parking slots from database
 
-    
+    //not working:
+    let add = "Damn"
+    //-->add is not assigned well
     axios.get(url).then((response) => {
       const dataMarkers = response.data;
       console.log(dataMarkers);
-
-
+      
       dataMarkers.forEach((e) => {
         const currParkingId = Number(e.parkingId);
         const currLat = Number(e.location.lat);
@@ -83,6 +84,17 @@ export default function App() {
         const currEndDate = new Date(e.dateEnd);
         const currPrice = e.price;
 
+        const getCurrCityAddress = (add, ()=>{
+          const currCityUrl=`https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
+          axios.get(currCityUrl).then((response) => {
+            const res = response.data.results[0].formatted_address.split(',');
+            add = `${String(res[0])}, ${String(res[1])}`
+            console.log(add);
+          })
+        })
+        getCurrCityAddress();
+        console.log(add);
+      
         setMarkers((current) => [
           ...current,
           {
@@ -127,6 +139,8 @@ export default function App() {
           <Marker
             key={`${marker.id}`}
             position={{ lat: marker.lat, lng: marker.lng}}
+            address={`${marker.address}`}
+            city={`${marker.city}`}
             startDate={`${marker.startDate}`}
             endDate={`${marker.endDate}`}
             price = {`${marker.price}`}
@@ -145,6 +159,8 @@ export default function App() {
         {selected ? (
               <InfoWindow
                 position={{ lat: selected.lat, lng: selected.lng }}
+                address={`${selected.address}`}
+                city={`${selected.city}`}
                 startDate={`${ selected.startDate}`}
                 endDate={`${ selected.endDate}`}
                 price = {`${selected.price}`}
@@ -153,7 +169,7 @@ export default function App() {
                 }}
                >
           <div className="info-box">
-              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>Street name, City</h2>
+              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>{`${selected.address}, ${selected.city}`}</h2>
               <p style={{fontSize:"21px", paddingLeft:"25px" }}>{`${ selected.startDate.toLocaleDateString('en-GB')} - ${ selected.endDate.toLocaleDateString('en-GB')} `}</p>
               <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>{`${selected.price}`}$</h2>
               <div className="h1-cont">
