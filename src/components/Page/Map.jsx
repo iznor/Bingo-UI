@@ -52,31 +52,25 @@ export default function App() {
     googleMapsApiKey: myApiKey,
     libraries,
   });
-  
+
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
-  const url =  "https://bingo-parking.herokuapp.com/api/parkings";
-
-  
+  const url = "https://bingo-parking.herokuapp.com/api/parkings";
 
   const onMapClick = React.useCallback((e) => {
     setSelected(null);
   }, []);
 
   const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map,post) => {
+  const onMapLoad = React.useCallback((map, post) => {
     mapRef.current = map;
-    //load all parking slots from database
 
-    //not working:
-    let add = "Damn"
-    //-->add is not assigned well
     axios.get(url).then((response) => {
       const dataMarkers = response.data;
       console.log(dataMarkers);
-      
-      dataMarkers.forEach((e) => {
+
+      dataMarkers.forEach((e, i) => {
         const currParkingId = Number(e.parkingId);
         const currLat = Number(e.location.lat);
         const currLng = Number(e.location.lng);
@@ -84,36 +78,34 @@ export default function App() {
         const currEndDate = new Date(e.dateEnd);
         const currPrice = e.price;
 
-        const getCurrCityAddress = (add, ()=>{
-          const currCityUrl=`https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
+        const getCurrCityAddress = ()=>new Promise((resolve, reject) => {
+          const currCityUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
           axios.get(currCityUrl).then((response) => {
-            const res = response.data.results[0].formatted_address.split(',');
-            add = `${String(res[0])}, ${String(res[1])}`
-            console.log(add);
-          })
-        })
-        getCurrCityAddress();
-        console.log(add);
-      
-        setMarkers((current) => [
-          ...current,
-          {
-            id: currParkingId,
-            lat: currLat,
-            lng: currLng,
-            startDate: currStartDate,
-            endDate: currEndDate,
-            price: currPrice
-          },
-        ]);
-        
-       });
+            const res = response.data.results[0].formatted_address.split(",");
+            const address = `${String(res[0])}, ${String(res[1])}`;
+            resolve(address);
+          });
+        });
 
+        getCurrCityAddress().then((address) => {
+          setMarkers((current) => [
+            ...current,
+            {
+              id: currParkingId,
+              lat: currLat,
+              lng: currLng,
+              address: address,
+              startDate: currStartDate,
+              endDate: currEndDate,
+              price: currPrice,
+            },
+          ]);
+        });
+      });
 
       return;
     });
   }, []);
-
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
@@ -138,12 +130,12 @@ export default function App() {
         {markers.map((marker) => (
           <Marker
             key={`${marker.id}`}
-            position={{ lat: marker.lat, lng: marker.lng}}
+            position={{ lat: marker.lat, lng: marker.lng }}
             address={`${marker.address}`}
             city={`${marker.city}`}
             startDate={`${marker.startDate}`}
             endDate={`${marker.endDate}`}
-            price = {`${marker.price}`}
+            price={`${marker.price}`}
             onClick={() => {
               setSelected(marker);
             }}
@@ -157,25 +149,31 @@ export default function App() {
         ))}
 
         {selected ? (
-              <InfoWindow
-                position={{ lat: selected.lat, lng: selected.lng }}
-                address={`${selected.address}`}
-                city={`${selected.city}`}
-                startDate={`${ selected.startDate}`}
-                endDate={`${ selected.endDate}`}
-                price = {`${selected.price}`}
-                onCloseClick={() => {
-                  setSelected(null);
-                }}
-               >
-          <div className="info-box">
-              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>{`${selected.address}, ${selected.city}`}</h2>
-              <p style={{fontSize:"21px", paddingLeft:"25px" }}>{`${ selected.startDate.toLocaleDateString('en-GB')} - ${ selected.endDate.toLocaleDateString('en-GB')} `}</p>
-              <h2 style={{fontSize:"21px", paddingLeft:"25px" }}>{`${selected.price}`}$</h2>
+          <InfoWindow
+            position={{ lat: selected.lat, lng: selected.lng }}
+            address={`${selected.address}`}
+            city={`${selected.city}`}
+            startDate={`${selected.startDate}`}
+            endDate={`${selected.endDate}`}
+            price={`${selected.price}`}
+            onCloseClick={() => {
+              setSelected(null);
+            }}
+          >
+            <div className="info-box">
+              <h2
+                style={{ fontSize: "16px", paddingLeft: "25px" }}
+              >{`${selected.address}`}</h2>
+              <p
+                style={{ fontSize: "21px", paddingLeft: "25px" }}
+              >{`${selected.startDate.toLocaleDateString(
+                "en-GB"
+              )} - ${selected.endDate.toLocaleDateString("en-GB")} `}</p>
+              <h2 style={{ fontSize: "21px", paddingLeft: "25px" }}>
+                {`${selected.price}`}$
+              </h2>
               <div className="h1-cont">
-              <button className="bingo-button">
-                bingo
-              </button>
+                <button className="bingo-button">bingo</button>
               </div>
             </div>
           </InfoWindow>
