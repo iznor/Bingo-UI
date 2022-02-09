@@ -1,7 +1,7 @@
 import "./Edit.scss";
 import { MdOutlineCancel } from "react-icons/md";
 import { ImCheckmark2 } from "react-icons/im";
-
+import axios from "axios";
   import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
@@ -118,21 +118,54 @@ function Add() {
   const onLastNameChange = e => setLastName(e.target.value);
   
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const location = {chosenLat , chosenLng}
-    const data = {price , endDate , startDate , phoneNumber , firstName , lastName , location};
-    console.log(data);
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data)
-    // };
-    // fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const location = {chosenLat , chosenLng}
+  //   const data = {price , endDate , startDate , phoneNumber , firstName , lastName , location};
+  //   console.log(data);
+
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data)
+  //   };
+
+
+    // const datab = await axios({
+    //   method: "Post",
+    //   url: "https://bingo-parking.herokuapp.com/api/parkings",
+    //   data:data,
+    // });
+
+    // fetch("https://bingo-parking.herokuapp.com/api/parkings", requestOptions)
     //   .then(response => response.json())
     //   .then(res => console.log(res));
-  };
+  // };
 
+  const handleSubmit = async (e) => {
+    console.log("HI");
+    e.preventDefault();
+    const location = {chosenLat , chosenLng}
+    const personData = {phoneNumber , firstName , lastName };
+    
+    const datab = await axios({
+      method: "Post",
+      url: "https://bingo-parking.herokuapp.com/api/parkings/",
+      data: { email : "default@gmail.com" , price: price , dateEnd: endDate , dateStart :startDate , location : location , person: personData},
+    });
+    console.log(JSON.stringify(datab.data));
+    // const data = JSON.stringify(datab.data);
+    // const obj = JSON.parse(data);
+    // if (obj.email === details.email && obj.password === details.password) {
+    //   console.log("SUCCESS");
+    //   console.log(details.email);
+    //   //save the successful email somewhere and use it late as the app state .
+    //   // window.location.href = `http://localhost:3000/user-questions?id=${id}`;
+    //   window.location=`/find?email=${details.email}`;
+    // } else {
+    //   console.log("FAIL");
+    // }
+  };
 
     return (
         <div className="edit-page">
