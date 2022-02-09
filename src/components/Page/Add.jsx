@@ -1,5 +1,5 @@
 import "./Edit.scss";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { MdOutlineCancel } from "react-icons/md";
 import { ImCheckmark2 } from "react-icons/im";
 import axios from "axios";
@@ -23,12 +23,12 @@ let dd = today.getDate();
 let mm = today.getMonth() + 1; //January is 0!
 let yyyy = today.getFullYear();
 if (dd < 10) {
-  dd = '0' + dd;
+  dd = "0" + dd;
 }
 if (mm < 10) {
-  mm = '0' + mm;
+  mm = "0" + mm;
 }
-today = yyyy + '-' + mm + '-' + dd;
+today = yyyy + "-" + mm + "-" + dd;
 
 let chosenLat = 0;
 let chosenLng = 0;
@@ -51,7 +51,7 @@ function GoogleMapsSearch() {
     setValue(e.target.value);
   };
   const handleReset = () => {
-    setValue('');
+    setValue("");
   };
 
   const handleSelect = async (address) => {
@@ -71,7 +71,6 @@ function GoogleMapsSearch() {
     }
   };
 
-
   return (
     <div className="input-label-from">
       <Combobox onSelect={handleSelect}>
@@ -86,12 +85,8 @@ function GoogleMapsSearch() {
           <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption
-                  key={id}
-                  value={description}
-                />
+                <ComboboxOption key={id} value={description} />
               ))}
-
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
@@ -99,10 +94,7 @@ function GoogleMapsSearch() {
   );
 }
 
-
-
 function Add() {
-
   const [price, setPrice] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -110,27 +102,35 @@ function Add() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const onEndDateChange = e => setEndDate(e.target.value);
-  const onStartDateChange = e => setStartDate(e.target.value);
-  const onPriceChange = e => setPrice(e.target.value);
-  const onNumberChange = e => setPhoneNumber(e.target.value);
-  const onFirstNameChange = e => setFirstName(e.target.value);
-  const onLastNameChange = e => setLastName(e.target.value);
-  
+  const onEndDateChange = (e) => setEndDate(e.target.value);
+  const onStartDateChange = (e) => setStartDate(e.target.value);
+  const onPriceChange = (e) => setPrice(e.target.value);
+  const onNumberChange = (e) => setPhoneNumber(e.target.value);
+  const onFirstNameChange = (e) => setFirstName(e.target.value);
+  const onLastNameChange = (e) => setLastName(e.target.value);
 
   const handleDiscard = (e) => {
     e.preventDefault();
-    setFirstName('');
-    setPrice('');
-    setEndDate('');
-    setStartDate('');
-    setPhoneNumber('');
-    setLastName('');
-  }
+    setFirstName("");
+    setPrice("");
+    setEndDate("");
+    setStartDate("");
+    setPhoneNumber("");
+    setLastName("");
+  };
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
-    if (!price || !endDate || !startDate || !phoneNumber || !firstName || !lastName || !chosenLat || !chosenLng) {
+    if (
+      !price ||
+      !endDate ||
+      !startDate ||
+      !phoneNumber ||
+      !firstName ||
+      !lastName ||
+      !chosenLat ||
+      !chosenLng
+    ) {
       alert("Missing values, please complete all the feilds");
       return;
     }
@@ -150,14 +150,11 @@ function Add() {
         dateStart: startDate,
         location: location,
         person: personData,
-        active: "True"
+        active: "True",
       },
     });
     alert("Success!");
-    const goToPreviousPath = () => {
-        navigate('/find');
-        }  
-        goToPreviousPath();
+    navigate("/find");
   };
 
   return (
@@ -166,15 +163,36 @@ function Add() {
         <div className="form-editing">
           <section className="input-label-from">
             <p>Owner's First Name</p>
-            <input type="text" id="fname" name="fname" placeholder="First name" value={firstName} onChange={onFirstNameChange} />
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="First name"
+              value={firstName}
+              onChange={onFirstNameChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Owner's Last Name</p>
-            <input type="text" id="lname" name="lname" placeholder="Last name" value={lastName} onChange={onLastNameChange} />
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              placeholder="Last name"
+              value={lastName}
+              onChange={onLastNameChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Contact Phone Number</p>
-            <input type="text" id="phone" name="phone" placeholder="Phone number" value={phoneNumber} onChange={onNumberChange} />
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="Phone number"
+              value={phoneNumber}
+              onChange={onNumberChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Address</p>
@@ -182,15 +200,36 @@ function Add() {
           </section>
           <section className="input-label-from">
             <p>Start Date</p>
-            <input type="date" id="dateStart" name="dateStart" min={today} value={startDate} onChange={onStartDateChange} />
+            <input
+              type="date"
+              id="dateStart"
+              name="dateStart"
+              min={today}
+              value={startDate}
+              onChange={onStartDateChange}
+            />
           </section>
           <section className="input-label-from">
             <p>End Date</p>
-            <input type="date" id="dateEnd" name="dateEnd" min={today} value={endDate} onChange={onEndDateChange} />
+            <input
+              type="date"
+              id="dateEnd"
+              name="dateEnd"
+              min={today}
+              value={endDate}
+              onChange={onEndDateChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Price</p>
-            <input type="text" id="price" name="price" placeholder="Price" value={price} onChange={onPriceChange} />
+            <input
+              type="text"
+              id="price"
+              name="price"
+              placeholder="Price"
+              value={price}
+              onChange={onPriceChange}
+            />
           </section>
         </div>
       </div>
@@ -203,7 +242,6 @@ function Add() {
         </button>
       </div>
     </div>
-
   );
 }
 export default Add;
