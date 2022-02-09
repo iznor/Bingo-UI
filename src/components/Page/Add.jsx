@@ -1,4 +1,5 @@
 import "./Edit.scss";
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineCancel } from "react-icons/md";
 import { ImCheckmark2 } from "react-icons/im";
 import axios from "axios";
@@ -127,6 +128,7 @@ function Add() {
     setLastName('');
   }
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     if (!price || !endDate || !startDate || !phoneNumber || !firstName || !lastName || !chosenLat || !chosenLng) {
       alert("Missing values, please complete all the feilds");
@@ -151,7 +153,11 @@ function Add() {
         active: "True"
       },
     });
-
+    alert("Success!");
+    const goToPreviousPath = () => {
+        navigate('/find');
+        }  
+        goToPreviousPath();
   };
 
   return (
