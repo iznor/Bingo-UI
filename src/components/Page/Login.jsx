@@ -22,8 +22,10 @@ function Login({ Login_to_our_project, error }) {
     const obj = JSON.parse(data);
     if (obj.email === details.email && obj.password === details.password) {
       console.log("SUCCESS");
+      console.log(details.email);
       //save the successful email somewhere and use it late as the app state .
-      window.location="/find";
+      // window.location.href = `http://localhost:3000/user-questions?id=${id}`;
+      window.location=`/find?email=${details.email}`;
     } else {
       console.log("FAIL");
     }
