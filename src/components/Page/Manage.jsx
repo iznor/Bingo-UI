@@ -27,9 +27,9 @@ function Manage({ COMPONENT }) {
 
   return (
     <div className="my-parkings">
-      {/* {filteredPlayers.map(parking =>{ */}
-        return <ParkCard />
-        {/* })} */}
+    {filteredPlayers.map(parking =>{ 
+        return <ParkCard name={parking} />
+      })}
     </div>
   );
 }

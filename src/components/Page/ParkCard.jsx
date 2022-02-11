@@ -11,10 +11,10 @@ const card = (address, dates) => {
 };
 
 
-function ParkCard(address, dates) {
+function ParkCard(props ,address ,dates) {
   return (
       <div className="card-row">
-        <Link to={"/manage/edit"}>{card("Even Gabirol 101, Tel Aviv", "15/01/22-22/01/22")}</Link>
+        <Link to={"/manage/edit"}>{card(props.name.person.firstName, props.name.dateStart)}</Link>
       </div>
   );
 }
