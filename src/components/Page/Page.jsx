@@ -15,6 +15,7 @@ import Map from "./Map";
 import Manage from "./Manage";
 import Add from "./Add";
 import EditForm from "./EditForm";
+import Contract from "./Contract";
 
 
 function Page() {
@@ -95,6 +96,16 @@ function Page() {
             <>
               <Header key={"Header"} />
               {/* <Map /> */}
+              <Footer key={"Footer"} />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/contract"
+          element={
+            <>
+              <Header key={"Header"} />
+              <Contract />
               <Footer key={"Footer"} />
             </>
           }

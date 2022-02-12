@@ -3,6 +3,7 @@ import "./Map.scss";
 import { myApiKey } from "../../keys/GoogleMaps";
 import axios from "axios";
 import { get } from "mongoose";
+import {BrowserRouter, Link, Switch, Route, useParams} from "react-router-dom";
 
 import {
   GoogleMap,
@@ -74,9 +75,13 @@ export default function App() {
         const currParkingId = Number(e.parkingId);
         const currLat = Number(e.location.lat);
         const currLng = Number(e.location.lng);
+        const currFname=e.person.firstName;
+        const currLname=e.person.lastName;
+        const currPhone=e.person.phoneNumber;
         const currStartDate = new Date(e.dateStart);
         const currEndDate = new Date(e.dateEnd);
         const currPrice = e.price;
+        const currEmail = e.email;
 
         const getCurrCityAddress = ()=>new Promise((resolve, reject) => {
           const currCityUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
@@ -94,6 +99,10 @@ export default function App() {
               id: currParkingId,
               lat: currLat,
               lng: currLng,
+              fname: currFname,
+              lname: currLname,
+              phone: currPhone,
+              email: currEmail,
               address: address,
               startDate: currStartDate,
               endDate: currEndDate,
@@ -131,6 +140,10 @@ export default function App() {
           <Marker
             key={`${marker.id}`}
             position={{ lat: marker.lat, lng: marker.lng }}
+            fname={`${marker.fname}`}
+            lname={`${marker.lname}`}
+            phone={`${marker.phone}`}
+            email={`${marker.email}`}
             address={`${marker.address}`}
             city={`${marker.city}`}
             startDate={`${marker.startDate}`}
@@ -150,7 +163,12 @@ export default function App() {
 
         {selected ? (
           <InfoWindow
+            id={`${selected.id}`}
             position={{ lat: selected.lat, lng: selected.lng }}
+            fname={`${selected.fname}`}
+            lname={`${selected.lname}`}
+            phone={`${selected.phone}`}
+            email={`${selected.email}`}
             address={`${selected.address}`}
             city={`${selected.city}`}
             startDate={`${selected.startDate}`}
@@ -173,7 +191,8 @@ export default function App() {
                 {`${selected.price}`}$
               </h2>
               <div className="h1-cont">
-                <button className="bingo-button">bingo</button>
+                <Link to={`/contract?id=${selected.id}&fname=${selected.fname}&lname=${selected.lname}&phone=${selected.phone}&email=${selected.email}&startdate=${selected.startDate.toLocaleDateString("en-GB")}&enddate=${selected.endDate.toLocaleDateString("en-GB")}&address=${selected.address}&price=${selected.price}`}>
+                  <button className="bingo-button">bingo</button></Link>
               </div>
             </div>
           </InfoWindow>
