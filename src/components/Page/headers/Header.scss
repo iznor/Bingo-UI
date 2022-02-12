@@ -2,7 +2,9 @@
 header {
     position: fixed;
     top: 0;
-    background-color: #ffd665;
+    // background-color: #ffd665;
+    background: linear-gradient(0deg, #fff349 0%, #ffd665 100%);
+    border-radius: 0px 0px 15px 15px;
     display: flex;
     align-items: center;
     font-weight: bold;

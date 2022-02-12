@@ -1,0 +1,82 @@
+@import "./variables.scss";
+
+.contract-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 80%;
+    max-width: 600px;
+    height: 70%;
+    background-color: white;
+    box-shadow: $base-shadow;
+    padding: 10px;
+    overflow: auto;
+
+    h1{
+        margin-top: 16px;
+        // margin-bottom: 8px;
+    }
+    h4{
+        display: flex;
+        width: 80%;
+        justify-content: left;
+    }
+    table{
+        width: 75%;
+        border-collapse: separate;
+        td{
+            border: 1px #cfcfcf solid;
+            width: 300px;
+            padding-left: 4px;
+            text-align: left;
+            justify-content: left;
+        }
+        .left-cell{
+            width: 100px;
+        }
+        .address-cell{
+            height: 22px;
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #whatsapp-chat{
+            margin: 0;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            float: right;
+            margin-right: 5px;
+            justify-self: center;
+            background-image: url("../../assets/img/whatsapp.svg");
+            background-size: contain;
+            background-color: transparent;
+            border: unset;
+            cursor: pointer;
+        }
+    }
+    p{
+        width: 75%;
+    }
+    .buttons{
+        button{
+            margin-top: 20px;
+            margin-bottom: 26px;
+            background-color: rgb(0, 202, 0);
+            border-radius: 5px;
+            width: 70px;
+            margin-right: 20px;
+            margin-left: 20px;
+            border: unset;
+            box-shadow: $base-shadow;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, rgb(0, 255, 76) 0%, rgb(79, 211, 3) 100%);
+        }
+        .share-btn{
+            background: antiquewhite;
+            color: rgb(53, 53, 53);
+        }
+    }
+}

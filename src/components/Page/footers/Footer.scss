@@ -1,7 +1,9 @@
 @import "../variables.scss";
 
 footer {
-    background-color: #ffd665;
+    // background: #ffd665;
+    background: linear-gradient(0deg, rgba(255,214,101,1) 0%, rgb(255, 243, 73) 100%);
+
     position: fixed;
     bottom: 0px;
     display: flex;
