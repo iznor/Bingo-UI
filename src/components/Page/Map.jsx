@@ -39,7 +39,7 @@ const mapContainerStyle = {
   justifyContent: "baseline",
 };
 const options = {
-  styles: mapStyles,
+  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -72,6 +72,7 @@ export default function App() {
       console.log(dataMarkers);
 
       dataMarkers.forEach((e, i) => {
+        if(e.active.toLowerCase()==="true"){
         const currParkingId = Number(e.parkingId);
         const currLat = Number(e.location.lat);
         const currLng = Number(e.location.lng);
@@ -82,6 +83,7 @@ export default function App() {
         const currEndDate = new Date(e.dateEnd);
         const currPrice = e.price;
         const currEmail = e.email;
+        
 
         const getCurrCityAddress = ()=>new Promise((resolve, reject) => {
           const currCityUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
@@ -110,7 +112,7 @@ export default function App() {
             },
           ]);
         });
-      });
+      }});
 
       return;
     });
@@ -153,7 +155,8 @@ export default function App() {
               setSelected(marker);
             }}
             icon={{
-              url: "https://www.ariseiip.com/wp-content/uploads/2021/06/parking.svg",
+              // url: "https://www.ariseiip.com/wp-content/uploads/2021/06/parking.svg",
+              url: "https://www.svgrepo.com/show/282135/placeholder-maps-and-location.svg",
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
               scaledSize: new window.google.maps.Size(30, 30),
@@ -180,14 +183,14 @@ export default function App() {
           >
             <div className="info-box">
               <h2
-                style={{ fontSize: "16px", paddingLeft: "25px" }}
+                style={{ fontFamily:"arial", textAlign:"center" , fontSize: "14px", paddingLeft: "25px" }}
               >{`${selected.address}`}</h2>
               <p
                 style={{ fontSize: "21px", paddingLeft: "25px" }}
               >{`${selected.startDate.toLocaleDateString(
                 "en-GB"
               )} - ${selected.endDate.toLocaleDateString("en-GB")} `}</p>
-              <h2 style={{ fontSize: "21px", paddingLeft: "25px" }}>
+              <h2 style={{ fontSize: "22px", paddingLeft: "25px", color: "green" }}>
                 {`${selected.price}`}$
               </h2>
               <div className="h1-cont">
