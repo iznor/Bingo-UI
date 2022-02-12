@@ -2,6 +2,7 @@ import "./Manage.scss";
 import "./Edit.scss";
 import "./ParkCard.scss";
 import ParkCard from "./ParkCard.jsx";
+import Add from "./EditForm.jsx";
 import axios from "axios";
 import React, { useEffect, useState ,useCallback} from 'react';
 import { set } from "date-fns/esm";
@@ -28,7 +29,12 @@ function Manage({ COMPONENT }) {
     console.log("renderParking")
     
     return parkingList.map((parking) => {
-        return <ParkCard key={parking.parkingId} {...parking} onDeleteClick={deleteParking} />;
+        return <ParkCard
+         key={parking.parkingId} 
+         {...parking} 
+         onDeleteClick={deleteParking}
+         onEditClick={editParking}
+         />;
     });
   }, [parkingList]);
 
@@ -50,6 +56,30 @@ function Manage({ COMPONENT }) {
     
     deletePost();
   };
+
+  const editParking = (parkingId) => {
+    console.log("Edit")
+    console.log(parkingId);
+
+    return  <Add
+    parkingid={parkingId} 
+    />;
+    // async function deletePost() {
+    //     await axios.delete(`https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`)
+    //     .then(res => {
+    //       const users = res.data;
+    //       console.log(users);
+    //       console.log('Delete successful');
+    //     })
+    //     setParkingList((prevState) => {
+    //     return prevState.filter((parking) => parking.parkingId !== parkingId);
+    //     });
+
+    // }
+    
+    // deletePost();
+  };
+
 
   return (
       <div className="my-parkings">   

@@ -2,8 +2,9 @@ import "./Edit.scss";
 import { MdOutlineCancel } from "react-icons/md";
 import { ImCheckmark2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import axios from "axios";
+import { useLocation } from 'react-router-dom'
 
 import usePlacesAutocomplete, {
   getGeocode,
@@ -18,6 +19,7 @@ import {
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
+import { set } from "mongoose";
 
 let today = new Date();
 let dd = today.getDate();
@@ -95,8 +97,15 @@ function GoogleMapsSearch() {
 }
 
 
-function Add() {
 
+
+function EditForm(props) {
+  
+const location = useLocation();
+  const  { id }   = location.state;
+  console.log(id);
+
+  // const [parking , setParking] = useState("");
   const [price, setPrice] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -111,6 +120,30 @@ function Add() {
   const onFirstNameChange = (e) => setFirstName(e.target.value);
   const onLastNameChange = (e) => setLastName(e.target.value);
 
+  
+
+  
+
+  useEffect(() => {
+    const datab =  axios({
+      method: "Get",
+      url: `https://bingo-parking.herokuapp.com/api/parkings/${id}`,
+    })
+    .then((datab) => {
+      const data = JSON.stringify(datab.data);
+      const obj = JSON.parse(data);
+      setFirstName(obj.person.firstName);
+      setLastName(obj.person.lastName);
+      setPhoneNumber(obj.person.phoneNumber);
+      setPrice(obj.price);
+      // complete deafults dates in form 
+      console.log(new Date(obj.dateStart));
+    })
+}, []);
+    
+
+ 
+
 
   const handleDiscard = (e) => {
     e.preventDefault();
@@ -123,22 +156,13 @@ function Add() {
   };
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
-    if (
-      !price ||
-      !endDate ||
-      !startDate ||
-      !phoneNumber ||
-      !firstName ||
-      !lastName
-    ) {
-      alert("Missing values, please complete all the feilds");
-      return;
-    }
     e.preventDefault();
+    console.log("the id is");
+    console.log(id);
     const personData = { phoneNumber, firstName, lastName };
     const datab = await axios({
       method: "Put",
-      url: "https://bingo-parking.herokuapp.com/api/parkings/21",
+      url: `https://bingo-parking.herokuapp.com/api/parkings/${id}`,
       data: {
         email: "default@gmail.com",
         price: price,
@@ -188,17 +212,13 @@ function Add() {
             />
           </section>
           <section className="input-label-from">
-            <p>Address</p>
-            <GoogleMapsSearch />
-          </section>
-          <section className="input-label-from">
             <p>Start Date</p>
             <input type="date"
               id="dateStart"
               name="dateStart"
               min={today}
               defaultValue={today}
-              value={startDate}
+              // value={startDate}
               onChange={onStartDateChange}
             />
           </section>
@@ -206,7 +226,7 @@ function Add() {
             <p>End Date</p>
             <input type="date" id="dateEnd"
               name="dateEnd"
-              value={endDate}
+              value={today}
               onChange={onEndDateChange}
             />
           </section>
@@ -233,4 +253,4 @@ function Add() {
 
   );
 }
-export default Add;
+export default EditForm;
