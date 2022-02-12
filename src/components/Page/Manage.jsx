@@ -8,7 +8,7 @@ import { set } from "date-fns/esm";
 //const [myParkings, setMyParkings] = useState(BRING FROM DATABASE: select * from parkings where email==default@gmail.com)
 
 function Manage({ COMPONENT }) {
-  const [userList, setUserList] = useState([]);
+  const [parkingList, setParkingList] = useState([]);
  
   useEffect(() => {
     const datab =  axios({
@@ -18,18 +18,17 @@ function Manage({ COMPONENT }) {
     .then((datab) => {
       const data = JSON.stringify(datab.data);
       const obj = JSON.parse(data);
-      setUserList(obj);
+      setParkingList(obj);
     })
   }, []);
   
-  const filteredPlayers = userList.filter((user) => user.email === "default@gmail.com");
-  console.log(filteredPlayers);
-
+  const filteredParking = parkingList.filter((user) => user.email === "default@gmail.com");
+  console.log(filteredParking);
   return (
-    <div className="my-parkings">
-    {filteredPlayers.map(parking =>{ 
-        return <ParkCard name={parking} />
-      })}
+      <div className="my-parkings">   
+      {filteredParking.map((result, i) => (
+        <ParkCard name={result} key={result.parkingId}></ParkCard>
+      ))}
     </div>
   );
 }

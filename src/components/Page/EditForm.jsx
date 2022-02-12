@@ -5,95 +5,95 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 
-  import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-  } from "use-places-autocomplete";
-  import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-  } from "@reach/combobox";
-  
-  import "@reach/combobox/styles.css";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
 
-  let today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1; //January is 0!
-  let yyyy = today.getFullYear();
-  if (dd < 10) {
-      dd = '0' + dd;
-  }
-  if (mm < 10) {
-      mm = '0' + mm;
-  }
-  today = yyyy + '-' + mm + '-' + dd;
+import "@reach/combobox/styles.css";
 
-let chosenLat=0;
-let chosenLng=0;
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1; //January is 0!
+let yyyy = today.getFullYear();
+if (dd < 10) {
+  dd = '0' + dd;
+}
+if (mm < 10) {
+  mm = '0' + mm;
+}
+today = yyyy + '-' + mm + '-' + dd;
+
+let chosenLat = 0;
+let chosenLng = 0;
 
 function GoogleMapsSearch() {
-    const {
-        ready,
-        value,
-        suggestions: { status, data },
-        setValue,
-        clearSuggestions,
-    } = usePlacesAutocomplete({
-        requestOptions: {
-            location: { lat: () => 43.6532, lng: () => -79.3832 },
-            radius: 100 * 1000,
-        },
-    });
-    
-    const handleInput = (e) => {
-        setValue(e.target.value);
-    };
-  
-    const handleSelect = async (address) => {
-        setValue(address, false);
-        clearSuggestions();
-        
-        try {
-            const results = await getGeocode({ address });
-            const { lat, lng } = await getLatLng(results[0]);
-            //save the chosen address as latlng
-            chosenLat=lat;
-            chosenLng=lng;
-        } catch (error) {
-            console.log("😱 Error: ", error);
-      }
-    };  
-    
-    return (
-        <div className="input-label-from">
-        <Combobox onSelect={handleSelect}>
-            <ComboboxInput
-            value={value}
-            onChange={handleInput}
-            disabled={!ready}
-            placeholder="Search for a parking"
-          />
-  
-          <ComboboxPopover>
-            <ComboboxList>
-              {status === "OK" &&
-                data.map(({ id, description }) => (
-                  <ComboboxOption
-                    key={id}
-                    value={description}
-                  />
-                ))}
-                
-            </ComboboxList>
-          </ComboboxPopover>
-        </Combobox>
-      </div>
-    );
-  }
-  
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: { lat: () => 43.6532, lng: () => -79.3832 },
+      radius: 100 * 1000,
+    },
+  });
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
+
+    try {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      //save the chosen address as latlng
+      chosenLat = lat;
+      chosenLng = lng;
+    } catch (error) {
+      console.log("😱 Error: ", error);
+    }
+  };
+
+  return (
+    <div className="input-label-from">
+      <Combobox onSelect={handleSelect}>
+        <ComboboxInput
+          value={value}
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder="Search for a parking"
+        />
+
+        <ComboboxPopover>
+          <ComboboxList>
+            {status === "OK" &&
+              data.map(({ id, description }) => (
+                <ComboboxOption
+                  key={id}
+                  value={description}
+                />
+              ))}
+
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
+    </div>
+  );
+}
+
 
 function Add() {
 
@@ -129,7 +129,7 @@ function Add() {
       !startDate ||
       !phoneNumber ||
       !firstName ||
-      !lastName 
+      !lastName
     ) {
       alert("Missing values, please complete all the feilds");
       return;
@@ -139,12 +139,12 @@ function Add() {
     const datab = await axios({
       method: "Put",
       url: "https://bingo-parking.herokuapp.com/api/parkings/21",
-      data : {
+      data: {
         email: "default@gmail.com",
         price: price,
         dateEnd: endDate,
         dateStart: startDate,
-       /* location: location,*/
+        /* location: location,*/
         person: personData,
         active: "True",
       },
@@ -154,81 +154,83 @@ function Add() {
   };
 
 
-    return (
-        <div className="edit-page">
+  return (
+    <div className="edit-page">
       <div className="edit-parking">
         <div className="form-editing">
           <section className="input-label-from">
             <p>Owner's First Name</p>
-            <input 
-            type="text" id="fname"
-            name="fname"
-            placeholder="First name"
-            value={firstName}
-            onChange={onFirstNameChange}
-             />
+            <input
+              type="text" id="fname"
+              name="fname"
+              placeholder="First name"
+              value={firstName}
+              onChange={onFirstNameChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Owner's Last Name</p>
             <input
-             type="text"
+              type="text"
               id="lname"
-               name="lname"
-               placeholder="Last name" 
-               value={lastName}
+              name="lname"
+              placeholder="Last name"
+              value={lastName}
               onChange={onLastNameChange}
-               />
+            />
           </section>
           <section className="input-label-from">
             <p>Contact Phone Number</p>
-            <input type="text" id="phone" name="phone" 
-            placeholder="Phone number"
-            value={phoneNumber}
-            onChange={onNumberChange}
-             />
+            <input type="text" id="phone" name="phone"
+              placeholder="Phone number"
+              value={phoneNumber}
+              onChange={onNumberChange}
+            />
           </section>
           <section className="input-label-from">
             <p>Address</p>
-            <GoogleMapsSearch/>
+            <GoogleMapsSearch />
           </section>
           <section className="input-label-from">
             <p>Start Date</p>
-            <input type="date" id="dateStart"
-             name="dateStart" min={today}
+            <input type="date"
+              id="dateStart"
+              name="dateStart"
+              min={today}
               defaultValue={today}
               value={startDate}
               onChange={onStartDateChange}
-              />
+            />
           </section>
           <section className="input-label-from">
             <p>End Date</p>
-            <input type="date" id="dateEnd" 
-            name="dateEnd" 
-            value={endDate}
-            onChange={onEndDateChange}
+            <input type="date" id="dateEnd"
+              name="dateEnd"
+              value={endDate}
+              onChange={onEndDateChange}
             />
           </section>
           <section className="input-label-from">
             <p>Price</p>
-            <input 
-            type="text" id="price"
-             name="price" placeholder="Price"
-             value={price}
-             onChange={onPriceChange}
-              />
+            <input
+              type="text" id="price"
+              name="price" placeholder="Price"
+              value={price}
+              onChange={onPriceChange}
+            />
           </section>
-          </div>
         </div>
-          <div className="row">
-            <button className="approval-icon">
-              <ImCheckmark2 className="plus-icon" onClick={handleSubmit}/>
-            </button>
-            <button className="cancel-icon">
-              <MdOutlineCancel className="plus-icon" onClick={handleDiscard}/>
-            </button>
+      </div>
+      <div className="row">
+        <button className="approval-icon">
+          <ImCheckmark2 className="plus-icon" onClick={handleSubmit} />
+        </button>
+        <button className="cancel-icon">
+          <MdOutlineCancel className="plus-icon" onClick={handleDiscard} />
+        </button>
       </div>
     </div>
-    
+
   );
 }
 export default Add;

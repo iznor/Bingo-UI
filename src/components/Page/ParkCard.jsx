@@ -1,5 +1,4 @@
 //PARK CARD -> NOT HOME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 import {Link} from "react-router-dom";
 const card = (address, dates) => {
   return (
@@ -9,12 +8,12 @@ const card = (address, dates) => {
     </div>
   );
 };
-
-
 function ParkCard(props ,address ,dates) {
   return (
-      <div className="card-row">
-        <Link to={"/manage/edit"}>{card(props.name.person.firstName, props.name.dateStart)}</Link>
+      <div className="card-row" >
+        <Link to={"/manage/edit"}>
+          {card(props.name.person.firstName,props.name.dateStart)}
+        </Link>
       </div>
   );
 }
