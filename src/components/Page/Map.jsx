@@ -192,7 +192,8 @@ export default function App() {
               </h2>
               <div className="h1-cont">
                 <Link to={`/contract?id=${selected.id}&fname=${selected.fname}&lname=${selected.lname}&phone=${selected.phone}&email=${selected.email}&startdate=${selected.startDate.toLocaleDateString("en-GB")}&enddate=${selected.endDate.toLocaleDateString("en-GB")}&address=${selected.address}&price=${selected.price}`}>
-                  <button className="bingo-button">bingo</button></Link>
+                  <button className="bingo-button">bingo</button>
+                </Link>
               </div>
             </div>
           </InfoWindow>
