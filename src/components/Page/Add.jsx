@@ -139,8 +139,12 @@ function Add() {
     const lng = chosenLng;
     const location = { lat, lng };
     const personData = { phoneNumber, firstName, lastName };
+    const token = localStorage.getItem("token");
     const datab = await axios({
       method: "Post",
+      headers: {
+        authorization: token
+      },
       url: "https://bingo-parking.herokuapp.com/api/parkings/",
       data: {
         email: "default@gmail.com",

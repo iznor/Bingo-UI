@@ -57,8 +57,7 @@ export default function App() {
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
-  const url = "https://bingo-parking.herokuapp.com/api/parkings";
-
+  
   const onMapClick = React.useCallback((e) => {
     setSelected(null);
   }, []);
@@ -66,8 +65,17 @@ export default function App() {
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map, post) => {
     mapRef.current = map;
-
-    axios.get(url).then((response) => {
+    const token = localStorage.getItem("token");
+    const datab =  axios({
+      headers: {
+        authorization: token
+      },
+      method: "Get",
+      url: "https://bingo-parking.herokuapp.com/api/parkings",
+    })
+    .then((response) => {
+      console.log("HERE")
+      console.log(response)
       const dataMarkers = response.data;
       console.log(dataMarkers);
 
@@ -84,7 +92,6 @@ export default function App() {
         const currPrice = e.price;
         const currEmail = e.email;
         
-
         const getCurrCityAddress = ()=>new Promise((resolve, reject) => {
           const currCityUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${currLat},${currLng}&sensor=true&key=${myApiKey}`;
           axios.get(currCityUrl).then((response) => {

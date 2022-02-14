@@ -14,14 +14,19 @@ function Manage({ COMPONENT }) {
  
   useEffect(() => {
     console.log("useEffect")
+    const token = localStorage.getItem("token");
     const datab =  axios({
+      headers: {
+        authorization: token
+      },
       method: "Get",
       url: "https://bingo-parking.herokuapp.com/api/parkings",
     })
     .then((datab) => {
       const data = JSON.stringify(datab.data);
       const obj = JSON.parse(data);
-      setParkingList(obj.filter((user) => user.email === "default@gmail.com"));
+      const email = localStorage.getItem("email");
+      setParkingList(obj.filter((user) => user.email === email));
     })
   }, []);
 
@@ -42,15 +47,22 @@ function Manage({ COMPONENT }) {
     console.log("delete")
     console.log(parkingId);
     async function deletePost() {
-        await axios.delete(`https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`)
-        .then(res => {
-          const users = res.data;
-          console.log(users);
-          console.log('Delete successful');
-        })
-        setParkingList((prevState) => {
-        return prevState.filter((parking) => parking.parkingId !== parkingId);
-        });
+      const token = localStorage.getItem("token")
+      const datab =  axios({
+        headers: {
+          authorization: token
+        },
+        method: "Delete",
+        url: `https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`,
+      })
+      .then(res => {
+        const users = res.data;
+        console.log(users);
+        console.log('Delete successful');
+      })
+      setParkingList((prevState) => {
+      return prevState.filter((parking) => parking.parkingId !== parkingId);
+      });
 
     }
     

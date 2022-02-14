@@ -21,7 +21,11 @@ function Contract() {
   
 
   const handleSubmit = async() => {
+    const token = localStorage.getItem("token");
     const res = await axios({
+      headers: {
+        authorization: token
+      },
       method: 'put',
       url: `https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`,
       data: {

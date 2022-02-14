@@ -1,8 +1,8 @@
 import "./Page.scss";
 import App from "../../App";
 import { useContext, useState, useMemo } from "react";
-import react from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import react, {useEffect} from "react";
+import { BrowserRouter,Navigate, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom";
 import LoginFooter from "./footers/Login";
 import LoginHeader from "./headers/Index";
@@ -16,9 +16,23 @@ import Manage from "./Manage";
 import Add from "./Add";
 import EditForm from "./EditForm";
 import Contract from "./Contract";
-
+import Profile from "./Profile";
 
 function Page() {
+  const [auth, setAuth] = useState(true);
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    console.log(isAuthenticated)
+    if(isAuthenticated){
+      setAuth(true)
+    }
+    else{
+      setAuth(false)
+    }
+  },[]);
+  useEffect(()=>{
+    console.log(auth)
+  },[auth])
   return (
     <div className="page-wrap">
       <Routes>
@@ -31,7 +45,7 @@ function Page() {
               <LoginFooter key={"loginFooter"} />
             </>
           }
-        ></Route>
+        />
         <Route
           path="/login"
           element={
@@ -45,69 +59,85 @@ function Page() {
         <Route
           path="/home"
           element={
+            auth?
             <>
               <Header key={"Header"} />
               <Home />
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/"/>
           }
         ></Route>
         <Route
           path="/add"
           element={
+            auth?
             <>
               <Header key={"Header"} />
               <Add />
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/"/>
           }
         ></Route>
         <Route
           path="/manage"
           element={
+            auth?
             <>
               <Header key={"Header"} />
               <Manage />
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/" />
           }
         ></Route>
-        <Route path="/manage/edit" element={
+        <Route 
+          path="/manage/edit" 
+          element={
+            auth?
             <>
             <Header key={"Header"} />
             <EditForm />
             <Footer key={"Footer"} />
-          </>
+          </>:
+          <Navigate to="/"/>
       }
         ></Route>
         <Route
           path="/find"
           element={
+            auth?
             <>
               <Header key={"Header"} />
               <Map />
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/" />
           }
         ></Route>
         <Route
           path="/profile"
           element={
+            auth?
             <>
               <Header key={"Header"} />
-              {/* <Map /> */}
+              <Profile/>
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/" />
           }
         ></Route>
         <Route
           path="/contract"
           element={
+            auth?
             <>
               <Header key={"Header"} />
               <Contract />
               <Footer key={"Footer"} />
-            </>
+            </>:
+            <Navigate to="/" />
           }
         ></Route>
       </Routes>

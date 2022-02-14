@@ -6,10 +6,10 @@ const buttonsMain = () => {
   
   return (
     <>
-    <Link to={"/reservations"}><button id="reserved-icon" style={handleActive("/reservations")}></button></Link>
-    <Link to={"/manage"}><button id="manage-icon" style={handleActive("/manage")}></button></Link>
-    <Link to={"/find"}><button id="find-icon" style={handleActive("/find")}></button></Link>
-    <Link to={"/add"}><button id="add-icon" style={handleActive("/add")}></button></Link>
+      <Link to={"/reservations"}><button id="reserved-icon" style={handleActive("/reservations")}></button></Link>
+      <Link to={"/manage"}><button id="manage-icon" style={handleActive("/manage")}></button></Link>
+      <Link to={"/find"}><button id="find-icon" style={handleActive("/find")}></button></Link>
+      <Link to={"/add"}><button id="add-icon" style={handleActive("/add")}></button></Link>
     </>
   );
 };

@@ -125,7 +125,11 @@ const location = useLocation();
   
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     const datab =  axios({
+      headers: {
+        authorization: token
+      },
       method: "Get",
       url: `https://bingo-parking.herokuapp.com/api/parkings/${id}`,
     })
@@ -160,9 +164,13 @@ const location = useLocation();
     console.log("the id is");
     console.log(id);
     const personData = { phoneNumber, firstName, lastName };
+    const token = localStorage.getItem("token");
     const datab = await axios({
       method: "Put",
       url: `https://bingo-parking.herokuapp.com/api/parkings/${id}`,
+      headers: {
+        authorization: token
+      },
       data: {
         email: "default@gmail.com",
         price: price,

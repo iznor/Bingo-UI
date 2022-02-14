@@ -14,18 +14,22 @@ function Login({ Login_to_our_project, error }) {
     console.log("HI");
     e.preventDefault();
     const datab = await axios({
+      headers: {"Access-Control-Allow-Origin": "*"},
       method: "Post",
-      url: "https://bingo-parking.herokuapp.com/api/users/login",
+      url: "https://bingo-parking.herokuapp.com/api/user/login",
       data: { email: details.email, password: details.password },
     });
     const data = JSON.stringify(datab.data);
     const obj = JSON.parse(data);
-    if (obj.email === details.email && obj.password === details.password) {
+    if (obj.token) {
       console.log("SUCCESS");
       console.log(details.email);
-      //save the successful email somewhere and use it late as the app state .
-      // window.location.href = `http://localhost:3000/user-questions?id=${id}`;
-      window.location=`/find?email=${details.email}`;
+      
+      console.log(obj.token.token)
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("token", `Bearer ${obj.token.token}`);
+      localStorage.setItem("email", `${details.email}`);
+      window.location.pathname = "/find";
     } else {
       console.log("FAIL");
     }
