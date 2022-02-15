@@ -1,23 +1,37 @@
-//PARK CARD -> NOT HOME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import Add from "./EditForm.jsx";
 import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md"
-// const card = (address, dates) => {
-//   return (
-//     <div className="card">
-//       <h1>{address}</h1>
-//       <h2>{dates}</h2>
-//       <h3>delete</h3>
-//     </div>
-//   );
-// };
+import {fetchAddress} from "./GlobalFunctions"
+import { myApiKey } from "../../keys/GoogleMaps";
+import axios from "axios";
+import Geocode from "react-geocode";
 
+Geocode.setApiKey(myApiKey);
+Geocode.setLanguage("en");
+Geocode.setRegion("es");
+Geocode.setLocationType("ROOFTOP");
+Geocode.enableDebug();
 
 function ParkCard({ parkingId, person, lastName, phoneNumber, dateStart, dateEnd, location, price, email, onDeleteClick, onEditClick }) {
-  return (
-    <div className="card-row" >
+const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map, post) => {
+    mapRef.current = map;
+    
+  Geocode.fromLatLng(location.lat, location.lng).then(
+    (response) => {
+      const res = response.results[0].formatted_address.split(",");
+      const address = `${String(res[0])}, ${String(res[1])}`;
+      console.log(address);
+    },
+    (error) => {
+      console.error(error);
+    }, []);
+  });
+  // console.log(address);
+    return (
+    <div onLoad={onMapLoad} className="card-row" >
       <div className="card">
         <h1>{person.firstName}</h1>
         <h2>{dateStart}</h2>
@@ -33,10 +47,6 @@ function ParkCard({ parkingId, person, lastName, phoneNumber, dateStart, dateEnd
         </button>
       </div>
       </div>
-
-      {/* <Link to={"/manage/edit"}>
-          {card(props.name.person.firstName,props.name.dateStart)}
-        </Link> */}
     </div>
   );
 }
