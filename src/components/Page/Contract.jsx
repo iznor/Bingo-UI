@@ -1,6 +1,5 @@
-import {BrowserRouter,Link,Switch,Route,useParams,useLocation,}
-from "react-router-dom";
-import { useState } from "react";
+import {BrowserRouter,Link,Switch,Route,useParams,useLocation,useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {InfoWindow} from "@react-google-maps/api";
 import "./Contract.scss";
 import { isVisible } from "@testing-library/user-event/dist/utils";
@@ -21,8 +20,9 @@ function Contract() {
   
 
   const handleSubmit = async() => {
+    const loggedInUser = localStorage.getItem("email");
     const token = localStorage.getItem("token");
-    const res = await axios({
+    const updateParkingStatus = await axios({
       headers: {
         authorization: token
       },
@@ -30,6 +30,16 @@ function Contract() {
       url: `https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`,
       data: {
           active: 'False'
+      }
+    });
+    const updateUserOrders = await axios({
+      headers: {
+        authorization: token
+      },
+      method: 'put',
+      url: `https://bingo-parking.herokuapp.com/api/user/${loggedInUser}`,
+      data: {
+          orders: parkingId
       }
     });
   };
@@ -42,6 +52,9 @@ function Contract() {
     window.location.href = `https://wa.me/send?+972&text=Bingo !      \nI found a parking that might interest you in:      \n${address}.      Start date: ${startDate} 
     \n      End date: ${endDate}.\n      Price: ${price}$\n      You can contact the parking owner - ${fname} ${lname}       in his cellphone: ${phone}`;
   };
+/////////////////
+
+  /////////////////
   return (
     <div className="contract-wrapper">
       <h1>Parking Contract</h1>

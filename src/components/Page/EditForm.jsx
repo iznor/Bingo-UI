@@ -172,7 +172,6 @@ const location = useLocation();
         authorization: token
       },
       data: {
-        email: "default@gmail.com",
         price: price,
         dateEnd: endDate,
         dateStart: startDate,

@@ -1,0 +1,55 @@
+@import '../variables.scss';
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+  }
+@keyframes mymove {
+    from {color: transparent;}
+    to {color: #424242;}
+  }
+
+
+.my-parkings {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    .no-history{
+        color: transparent;
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        animation: mymove 0.2s forwards;
+        animation-delay: 1s;
+        button{
+            color: transparent;
+            margin-top: 5px;
+            font-size: 28px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-weight: bold;
+            height: 50px;
+            border-radius: 5px;
+            border: unset;
+            cursor: pointer;
+            background-color: transparent;
+            animation: mymove 1s forwards ;
+            animation-delay: 1s;
+        }
+        
+    }
+    .search-icon{
+        display: block;
+        width: 80px;
+        height: 80px;
+        background: transparent;
+        background-image: url("../../../assets/img/logo.png") ;
+        filter: invert(35%) sepia(40%) saturate(0%) hue-rotate(0deg) brightness(110%) contrast(200%);
+        background-repeat: no-repeat;
+        background-size: contain;
+        animation: spin 3s none;
+    }
+}
+

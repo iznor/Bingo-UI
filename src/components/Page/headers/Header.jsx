@@ -20,6 +20,8 @@ const setH1 = (path)=>{
       return "Profile"
     case "/contract":
       return "Sign a Contract"
+    case "/orders":
+      return "Orders History"
   
     default:
       break;

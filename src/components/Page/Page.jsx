@@ -17,6 +17,7 @@ import Add from "./Add";
 import EditForm from "./EditForm";
 import Contract from "./Contract";
 import Profile from "./Profile";
+import Orders from "./Orders/Orders";
 
 function Page() {
   const [auth, setAuth] = useState(true);
@@ -87,6 +88,18 @@ function Page() {
             <>
               <Header key={"Header"} />
               <Manage />
+              <Footer key={"Footer"} />
+            </>:
+            <Navigate to="/" />
+          }
+        ></Route>
+        <Route
+          path="/orders"
+          element={
+            auth?
+            <>
+              <Header key={"Header"} />
+              <Orders />
               <Footer key={"Footer"} />
             </>:
             <Navigate to="/" />

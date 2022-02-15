@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 
 export function CurrentPath(){
@@ -8,5 +7,5 @@ export function CurrentPath(){
 
 //highlight current path's matching button
 export const handleActive = (path)=>{
-    return CurrentPath()===path? {boxShadow: "#fffefcf8 0px 0px 30px 5px", backgroundColor:"#ffecade7"}:null
+    return CurrentPath()===path? {boxShadow: "#fffefcf8 0px 0px 30px 5px", backgroundColor:"#fff5d3c5"}:null
   }

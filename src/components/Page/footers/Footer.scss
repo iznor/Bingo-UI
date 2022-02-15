@@ -33,12 +33,12 @@ footer {
             background-color: transparent;
             &:hover{
                 cursor: pointer;
-                background-color: #ffecade7;
+                background-color: #fff5d3c5;
                 box-shadow: #fffefcf8 0px 0px 30px 5px;
             }
         }
         
-        #reserved-icon {
+        #orders-icon {
             border-radius: 80%;
             background-image: url('../../../assets/img/reservations.svg');
         }
@@ -50,16 +50,17 @@ footer {
 
         #find-icon {
             border-radius: 80%;
-            background-image: url('../../../assets/img/find.svg');
+            background-image: url('../../../assets/img/find1.svg');
         }
 
         #add-icon {
             border-radius: 80%;
-            background-image: url('../../../assets/img/add.svg');
+            background-image: url('../../../assets/img/add1.svg');
         }
 
         #manage-icon {
-            background-image: url('../../../assets/img/edit.svg');
+            border-radius: 20%;
+            background-image: url('../../../assets/img/edit2.svg');
         }
 
         #profile-icon {

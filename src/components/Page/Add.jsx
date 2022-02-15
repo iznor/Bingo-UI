@@ -147,7 +147,7 @@ function Add() {
       },
       url: "https://bingo-parking.herokuapp.com/api/parkings/",
       data: {
-        email: "default@gmail.com",
+        email: localStorage.getItem("email"),
         price: price,
         dateEnd: endDate,
         dateStart: startDate,

@@ -4,6 +4,7 @@ import { myApiKey } from "../../keys/GoogleMaps";
 import axios from "axios";
 import { get } from "mongoose";
 import {BrowserRouter, Link, Switch, Route, useParams} from "react-router-dom";
+// import { useRouter } from "next/router"
 
 import {
   GoogleMap,
@@ -56,6 +57,7 @@ export default function App() {
 
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
+
 
   
   const onMapClick = React.useCallback((e) => {
@@ -201,8 +203,9 @@ export default function App() {
                 {`${selected.price}`}$
               </h2>
               <div className="h1-cont">
-                <Link to={`/contract?id=${selected.id}&fname=${selected.fname}&lname=${selected.lname}&phone=${selected.phone}&email=${selected.email}&startdate=${selected.startDate.toLocaleDateString("en-GB")}&enddate=${selected.endDate.toLocaleDateString("en-GB")}&address=${selected.address}&price=${selected.price}`}>
-                  <button className="bingo-button">bingo</button>
+                <Link to={`/contract?id=${selected.id}&fname=${selected.fname}&lname=${selected.lname}&phone=${selected.phone}&email=${selected.email}&startdate=${selected.startDate.toLocaleDateString("en-GB")}&enddate=${selected.endDate.toLocaleDateString("en-GB")}&address=${selected.address}&price=${selected.price}`} >
+                  <button
+                  className="bingo-button">bingo</button>
                 </Link>
               </div>
             </div>
