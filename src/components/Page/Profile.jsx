@@ -74,7 +74,7 @@ function Profile() {
       <img className="line" src={line} />
       <div className="details-row">
         <p>Balance</p>
-        <p style={earnings-paid>0 ? {color:"green"} : {color:"red"}}>{earnings-paid}$</p>
+        <p style={earnings-paid>=0 ? {color:"green"} : {color:"red"}}>{earnings-paid}$</p>
       </div>
       <img className="line" src={line} />
       <button className="logout-btn" onClick={logout}>
