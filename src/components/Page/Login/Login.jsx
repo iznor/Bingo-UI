@@ -1,8 +1,12 @@
 import "./Login.scss";
 import React, { useState } from "react";
+import {useNavigate, Navigate} from "react-router-dom";
 import axios from "axios";
 
+ localStorage.setItem("isAuthenticated", false);
+
 function Login() {
+  const navigate = useNavigate();
   const [details, setDetails] = useState({ email: "", password: "" });
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -18,7 +22,7 @@ function Login() {
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("token", `Bearer ${obj.token.token}`);
       localStorage.setItem("email", `${details.email}`);
-      window.location.pathname = "/find";
+      navigate("/find");
     } else {
       console.log("Failed To Login");
     }
