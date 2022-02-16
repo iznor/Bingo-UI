@@ -7,6 +7,8 @@ import {CurrentPath} from "./GlobalFunctions"
 import { myApiKey } from "../../keys/GoogleMaps";
 import axios from "axios";
 import Geocode from "react-geocode";
+import "./ParkCard.scss";
+import "./Manage.scss";
 
 Geocode.setApiKey(myApiKey);
 Geocode.setLanguage("en");
@@ -42,12 +44,14 @@ function ParkCard({ editMode, parkingId, person, lastName, phoneNumber, dateStar
       setAddress(()=>address)
     });
     return (
+    
+    <div className="cards-wrapper" >
     <div className="card-row" >
       <div className="card">
       <table>
         <tbody>
         <tr>
-          <td className="address" style={address.length >20 ? {fontSize:'28px'} : {fontSize:'32px'}} >{address}</td>
+          <td className="address" style={address.length >20 ? {fontSize:'24px'} : {fontSize:'28px'}} >{address}</td>
         </tr>
         <tr>
           <td className="date">
@@ -62,8 +66,8 @@ function ParkCard({ editMode, parkingId, person, lastName, phoneNumber, dateStar
         </tbody>
       </table>
       {editMode ? displayEditDelete(parkingId, onDeleteClick, onEditClick) : null}
-
       </div>
+    </div>
     </div>
   );
 }
