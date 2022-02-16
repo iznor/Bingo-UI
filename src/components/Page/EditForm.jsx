@@ -5,21 +5,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState , useEffect} from "react";
 import axios from "axios";
 import { useLocation } from 'react-router-dom'
-
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
-
 import "@reach/combobox/styles.css";
-import { set } from "mongoose";
 
 let today = new Date();
 let dd = today.getDate();
@@ -33,78 +19,10 @@ if (mm < 10) {
 }
 today = yyyy + '-' + mm + '-' + dd;
 
-let chosenLat = 0;
-let chosenLng = 0;
-
-function GoogleMapsSearch() {
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      location: { lat: () => 43.6532, lng: () => -79.3832 },
-      radius: 100 * 1000,
-    },
-  });
-
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleSelect = async (address) => {
-    setValue(address, false);
-    clearSuggestions();
-
-    try {
-      const results = await getGeocode({ address });
-      const { lat, lng } = await getLatLng(results[0]);
-      //save the chosen address as latlng
-      chosenLat = lat;
-      chosenLng = lng;
-    } catch (error) {
-      console.log("😱 Error: ", error);
-    }
-  };
-
-  return (
-    <div className="input-label-from">
-      <Combobox onSelect={handleSelect}>
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Search for a parking"
-        />
-
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({ id, description }) => (
-                <ComboboxOption
-                  key={id}
-                  value={description}
-                />
-              ))}
-
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </div>
-  );
-}
-
-
-
-
-function EditForm(props) {
+function EditForm() {
   
 const location = useLocation();
   const  { id }   = location.state;
-
-  // const [parking , setParking] = useState("");
   const [price, setPrice] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -118,10 +36,6 @@ const location = useLocation();
   const onNumberChange = (e) => setPhoneNumber(e.target.value);
   const onFirstNameChange = (e) => setFirstName(e.target.value);
   const onLastNameChange = (e) => setLastName(e.target.value);
-
-  
-
-  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -144,10 +58,6 @@ const location = useLocation();
     })
 }, []);
     
-
- 
-
-
   const handleDiscard = (e) => {
     e.preventDefault();
     setFirstName("");
@@ -172,7 +82,6 @@ const location = useLocation();
         price: price,
         dateEnd: endDate,
         dateStart: startDate,
-        /* location: location,*/
         person: personData,
         active: "True",
       },
@@ -180,7 +89,6 @@ const location = useLocation();
     alert("Success!");
     navigate("/find");
   };
-
 
   return (
     <div className="edit-page">
@@ -246,11 +154,11 @@ const location = useLocation();
         </div>
       </div>
       <div className="row">
+        <button className="cancel-icon">
+          <MdOutlineCancel className="discard-icon" onClick={handleDiscard} />
+        </button>
         <button className="approval-icon">
           <ImCheckmark2 className="plus-icon" onClick={handleSubmit} />
-        </button>
-        <button className="cancel-icon">
-          <MdOutlineCancel className="plus-icon" onClick={handleDiscard} />
         </button>
       </div>
     </div>

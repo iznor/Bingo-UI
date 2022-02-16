@@ -1,6 +1,5 @@
 import "./Manage.scss";
 // import "./Edit.scss";
-import "./ParkCard.scss";
 import ParkCard from "./ParkCard.jsx";
 import Add from "./EditForm.jsx";
 import axios from "axios";

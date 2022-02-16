@@ -236,11 +236,11 @@ function Add() {
         </div>
       </div>
       <div className="row">
+        <button className="cancel-icon">
+          <MdOutlineCancel className="discard-icon" onClick={handleDiscard} />
+        </button>
         <button className="approval-icon">
           <ImCheckmark2 className="plus-icon" onClick={handleSubmit} />
-        </button>
-        <button className="cancel-icon">
-          <MdOutlineCancel className="plus-icon" onClick={handleDiscard} />
         </button>
       </div>
     </div>

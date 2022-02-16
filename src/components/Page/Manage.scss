@@ -28,7 +28,7 @@
         opacity: 0.9;
         padding-top: 15px;
         padding-bottom: 10px;
-        background: rgb(240, 239, 235);
+        background: #f0efeb;
     }
 
     .plus-icon {
@@ -95,7 +95,24 @@
         .delete-button {
             color: #a20000;
         }
-
+        .waze{
+            display: flex;
+            flex-direction: row;
+            // justify-items: center;
+            // margin-right: 0;
+            background: transparent;
+            button{
+                width: 50px;
+                height: 50px;
+                background: url("../../assets/img/waze.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-color: rgba(120, 235, 250, 0.822);
+                border-radius: 10px;
+                border: rgba(0, 0, 0, 0) solid 6px;
+                box-shadow: $base-shadow;
+            }
+        }
     }
 
 }

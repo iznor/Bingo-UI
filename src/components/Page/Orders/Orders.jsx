@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import "./Orders.scss";
-import "../ParkCard.scss";
 import ParkCard from "../ParkCard.jsx";
 import EmptyPageMessage from "../EmptyPageMessage/EmptyPageMessage";
 const axios = require("axios");

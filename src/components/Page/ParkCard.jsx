@@ -7,7 +7,6 @@ import {CurrentPath} from "./GlobalFunctions"
 import { myApiKey } from "../../keys/GoogleMaps";
 import axios from "axios";
 import Geocode from "react-geocode";
-import "./ParkCard.scss";
 import "./Manage.scss";
 
 Geocode.setApiKey(myApiKey);
@@ -30,6 +29,17 @@ function displayEditDelete(parkingId,onDeleteClick, onEditClick) {
   </button>
   </div>
   )
+}
+
+function displayNavigateSuggestion(lat,lng) {
+  return(
+    <div className="row">
+    <a  className="waze" 
+    href={`https://www.waze.com/ul?ll=${lat}%2C${lng}&navigate=yes&zoom=17`}><button
+    ></button></a>
+    </div>
+    )
+  
 }
 
 
@@ -65,7 +75,7 @@ function ParkCard({ editMode, parkingId, person, lastName, phoneNumber, dateStar
         </tr>
         </tbody>
       </table>
-      {editMode ? displayEditDelete(parkingId, onDeleteClick, onEditClick) : null}
+      {editMode ? displayEditDelete(parkingId, onDeleteClick, onEditClick) : displayNavigateSuggestion(location.lat,location.lng)}
       </div>
     </div>
     </div>

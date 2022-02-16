@@ -95,13 +95,19 @@
         .approval-icon, .cancel-icon {
             margin-top: 10px;
             width: 42px;
-            background: black;
+            background: #f0efeb;
             border-radius: 50%;
-            border: 2.10345px solid rgb(29, 29, 29);
+            border: none;
             box-shadow: 0px 4.2069px 4.2069px rgba(0, 0, 0, 0.25);
         }
         .plus-icon {
-            color: $base-yellow;
+            color: green;
+            margin-top: 6px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+        .discard-icon {
+            color: red;
             margin-top: 6px;
             font-size: 23px;
             cursor: pointer;
