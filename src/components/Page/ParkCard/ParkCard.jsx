@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import Add from "./EditForm.jsx";
+import Add from "../Edit/EditForm.jsx";
 import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md"
-import {CurrentPath} from "./GlobalFunctions"
-import { myApiKey } from "../../keys/GoogleMaps";
+import {CurrentPath} from "../GlobalFunctions"
+import { myApiKey } from "../Map/GoogleMaps";
 import axios from "axios";
 import Geocode from "react-geocode";
-import "./Manage.scss";
+import "../Manage/Manage.scss";
 
 Geocode.setApiKey(myApiKey);
 Geocode.setLanguage("en");

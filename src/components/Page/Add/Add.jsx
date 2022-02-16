@@ -1,4 +1,4 @@
-import "./Edit.scss";
+import "../Edit/Edit.scss";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineCancel } from "react-icons/md";
 import { ImCheckmark2 } from "react-icons/im";

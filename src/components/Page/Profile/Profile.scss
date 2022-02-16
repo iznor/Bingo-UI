@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import '../styleVariables/variables.scss';
 
 .profile-page{
     display: flex;
@@ -11,7 +11,7 @@
     .profile-pic{
         width: 100px;
         height: 100px;
-        background-image: url("../../assets/img/default-profile-pic.svg");
+        background-image: url("../../../assets/img/default-profile-pic.svg");
         background-size: contain;
     }
 

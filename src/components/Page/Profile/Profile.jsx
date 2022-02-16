@@ -1,4 +1,4 @@
-import line from "../../assets/img/line.svg";
+import line from "../../../assets/img/line.svg";
 import "./Profile.scss";
 import { useState, useEffect } from "react";
 const axios = require("axios");

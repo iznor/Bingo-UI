@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../styleVariables/variables.scss';
 
 .index {
         display: flex;
@@ -7,7 +7,7 @@
     row-gap: 30px;
     min-height: 100vh;
     justify-content: end;
-    background-image: url('../../assets/img/index9.gif');
+    background-image: url('../../../assets/img/index9.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

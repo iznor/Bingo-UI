@@ -1,6 +1,6 @@
 import React from "react";
 import "./Map.scss";
-import { myApiKey } from "../../keys/GoogleMaps";
+import { myApiKey } from "./GoogleMaps";
 import axios from "axios";
 import { get } from "mongoose";
 import {BrowserRouter, Link, Switch, Route, useParams} from "react-router-dom";

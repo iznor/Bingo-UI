@@ -112,7 +112,8 @@ function Contract() {
         <button className="share-btn" onClick={handleShareParkingInWhatsapp}>
           Share
         </button>
-        <Link to={"/find"}><button onClick={handleSubmit}>Sign</button></Link>
+        {localStorage.getItem("email")===email ? 
+        <></> : <Link to={"/find"}><button onClick={handleSubmit}>Sign</button></Link>}
       </div>
     </div>
   );

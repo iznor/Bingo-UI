@@ -6,17 +6,16 @@ import { BrowserRouter,Navigate, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom";
 import LoginFooter from "./footers/Login";
 import LoginHeader from "./headers/Index";
-import Index from "./Index";
-import Login from "./Login";
+import Index from "./Index/Index";
+import Login from "./Login/Login";
 import Header from "./headers/Header";
 import Footer from "./footers/Footer";
-import Home from "./Home";
-import Map from "./Map";
-import Manage from "./Manage";
-import Add from "./Add";
-import EditForm from "./EditForm";
-import Contract from "./Contract";
-import Profile from "./Profile";
+import Map from "./Map/Map";
+import Manage from "./Manage/Manage";
+import Add from "./Add/Add";
+import EditForm from "./Edit/EditForm";
+import Contract from "./Contract/Contract";
+import Profile from "./Profile/Profile";
 import Orders from "./Orders/Orders";
 
 function Page() {
@@ -53,18 +52,6 @@ function Page() {
               <Login/>
               <LoginFooter key={"loginFooter"} />
             </>
-          }
-        ></Route>
-        <Route
-          path="/home"
-          element={
-            auth?
-            <>
-              <Header key={"Header"} />
-              <Home />
-              <Footer key={"Footer"} />
-            </>:
-            <Navigate to="/"/>
           }
         ></Route>
         <Route

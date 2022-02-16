@@ -1,11 +1,11 @@
 import "./Manage.scss";
 // import "./Edit.scss";
-import ParkCard from "./ParkCard.jsx";
-import Add from "./EditForm.jsx";
+import ParkCard from "../ParkCard/ParkCard";
+import Add from "../Edit/EditForm.jsx";
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
 import { set } from "date-fns/esm";
-import EmptyPageMessage from "./EmptyPageMessage/EmptyPageMessage";
+import EmptyPageMessage from "../EmptyPageMessage/EmptyPageMessage";
 
 function Manage() {
   const [editMode, setEditMode] = useState(true);

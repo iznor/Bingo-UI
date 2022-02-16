@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import '../styleVariables/variables.scss';
 
 .contract-wrapper{
     display: flex;
@@ -47,7 +47,7 @@
             float: right;
             margin-right: 5px;
             justify-self: center;
-            background-image: url("../../assets/img/whatsapp.svg");
+            background-image: url("../../../assets/img/whatsapp.svg");
             background-size: contain;
             background-color: transparent;
             border: unset;
