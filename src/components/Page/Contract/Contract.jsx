@@ -103,7 +103,7 @@ function Contract() {
       </p>
       <h4>4. Payment Method</h4>
       <p>Visa ending with ****2847.</p>
-      <div className="buttons">
+      <div className="buttons-contract">
         <button className="share-btn" onClick={handleShareParkingInWhatsapp}>
           Share
         </button>
