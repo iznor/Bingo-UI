@@ -129,7 +129,6 @@ const location = useLocation();
               name="dateStart"
               min={today}
               defaultValue={today}
-              // value={startDate}
               onChange={onStartDateChange}
             />
           </section>
@@ -137,7 +136,7 @@ const location = useLocation();
             <p>End Date</p>
             <input type="date" id="dateEnd"
               name="dateEnd"
-              value={today}
+              defaultValue={today}
               onChange={onEndDateChange}
             />
           </section>
