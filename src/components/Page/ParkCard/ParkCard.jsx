@@ -32,7 +32,8 @@ function displayNavigateSuggestion(lat,lng) {
   return(
     <div className="row">
     <a  className="waze" 
-    href={`https://www.waze.com/ul?ll=${lat}%2C${lng}&navigate=yes&zoom=17`}><button
+    href={`https://www.waze.com/ul?ll=${lat}%2C${lng}&navigate=yes&zoom=17`}
+    target="_blank"><button
     ></button></a>
     </div>
     )
