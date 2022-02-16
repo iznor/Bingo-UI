@@ -1,19 +1,31 @@
-    @import './variables.scss';
+@import './variables.scss';
+
+.my-parkings {
+    width: 100%;
+    justify-content: start;
+    justify-content: start;
+    text-align: center;
+    height: 520px;
+    z-index: 0;
 
     .card-row {
-        *{
+        * {
             text-decoration: none;
         }
+
         // border: 1px red solid;
         width: 90%;
         max-width: 600px;
-        .card{
+        
+        // height: 500px;
+        .card {
+            color: black;
             display: flex;
-            flex-direction: column;    
+            flex-direction: column;
             color: $base-background;
             justify-content: center;
             text-decoration: none;
-            background: url("../../assets/img/parking-marker.svg");
+            // background: url("../../assets/img/parking-marker.svg");
             background-repeat: no-repeat;
             background-position: 5cm 0cm;
             min-height: 160px;
@@ -21,18 +33,81 @@
             box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
             opacity: 0.9;
             padding: 15px;
-            background-color: rgb(255, 255, 255);
-            .plus-icon{
+            background: rgb(240, 239, 235);
+
+            .plus-icon {
                 cursor: pointer;
             }
-        h1{
-            color: black;
-            font-size: 26px;
-            
-        }
-        h2{
-            color: black;
-            font-size: 26px;
+
+            table {
+                border-radius: 10px;
+                background: #fbfbfb;
+                color: black;
+                display: block;
+                width: 100%;
+                font-size: 26px;
+                box-shadow: $base-shadow;
+                // border: red 1px solid;
+
+                tbody {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: baseline;
+                    align-content: baseline;
+
+
+                    // border: blue 1px solid;
+                    td {
+
+                        width: 450px;
+                        letter-spacing: 1.4px;
+                        text-align: center;
+                    }
+
+                    .address {
+                        font-weight: bold;
+                        padding-bottom: 0px;
+                        padding-top: 5px;
+                    }
+
+                    .date {
+                        margin-top: -5px;
+                        padding-top: -5px;
+                    }
+
+                    .price {
+                        font-weight: bold;
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+
+            // :last-child{
+            //     background-color: white;
+            // }
+            .row {
+                background: transparent;
+
+                :first-child {
+                    background-color: #fbfbfb;
+                    border: 2px solid #fbfbfb;
+                }
+
+                :last-child {
+                    border: unset;
+                    background-color: #fbfbfb;
+                }
+
+                .plus-icon {
+                    color: black;
+
+                }
+
+                .delete-button {
+                    color: #a20000;
+                }
+
+            }
         }
     }
-    }
+}

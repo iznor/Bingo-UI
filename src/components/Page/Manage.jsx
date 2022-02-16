@@ -9,11 +9,11 @@ import { set } from "date-fns/esm";
 import EmptyPageMessage from "./EmptyPageMessage/EmptyPageMessage";
 
 function Manage() {
+  const [editMode, setEditMode] = useState(true);
   const [parkingList, setParkingList] = useState([]);
   // const [filteredParking, setFilteredParking] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect");
     const token = localStorage.getItem("token");
     const datab = axios({
       headers: {
@@ -26,14 +26,12 @@ function Manage() {
       const obj = JSON.parse(data);
       const email = localStorage.getItem("email");
       setParkingList(obj.filter((user) => user.email === email));
-      console.log(obj);
     });
   }, []);
 
 
 
   const renderParking = useCallback(() => {
-    console.log("renderParking");
     if(!(parkingList.map((parking)=>{
       return (
         <ParkCard
@@ -54,6 +52,7 @@ function Manage() {
       console.log(parkingList);
         return (
           <ParkCard
+            editMode={editMode}
             key={parking.parkingId}
             {...parking}
             onDeleteClick={deleteParking}
@@ -64,7 +63,6 @@ function Manage() {
   }, [parkingList]);
 
   const deleteParking = (parkingId) => {
-    console.log("delete");
     console.log(parkingId);
     async function deletePost() {
       const token = localStorage.getItem("token");
@@ -76,7 +74,6 @@ function Manage() {
         url: `https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`,
       }).then((res) => {
         const users = res.data;
-        console.log(users);
         console.log("Delete successful");
       });
       setParkingList((prevState) => {
@@ -88,35 +85,14 @@ function Manage() {
   };
 
   const editParking = (parkingId) => {
-    console.log("Edit");
     console.log(parkingId);
 
     return <Add parkingid={parkingId} />;
-    // async function deletePost() {
-    //     await axios.delete(`https://bingo-parking.herokuapp.com/api/parkings/${parkingId}`)
-    //     .then(res => {
-    //       const users = res.data;
-    //       console.log(users);
-    //       console.log('Delete successful');
-    //     })
-    //     setParkingList((prevState) => {
-    //     return prevState.filter((parking) => parking.parkingId !== parkingId);
-    //     });
-
-    // }
-
-    // deletePost();
   };
 
   return (
     <div className="my-parkings">
       {renderParking()}
-      {/* {parkingList.map((result, i) => (
-        <ParkCard name={result} key={result.parkingId} 
-        setParkingList={setParkingList}
-        parkingList = {parkingList}
-        ></ParkCard>
-       ))} */}
     </div>
   );
 }

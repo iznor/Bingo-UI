@@ -20,9 +20,9 @@ const loggedInUser = localStorage.getItem("email");
 
 function Orders() {
   const [parkingList, setParkingList] = useState([]);
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect");
     const token = localStorage.getItem("token");
     const userOrders = axios({
       headers: {
@@ -34,18 +34,15 @@ function Orders() {
       const data = JSON.stringify(userOrders.data);
       const obj = JSON.parse(data);
       setParkingList(obj);
-      console.log(obj);
     });
   }, []);
 
   const renderParking = useCallback(() => {
-    console.log("renderParking");
-    console.log(parkingList);
     if (!parkingList.length) {
       return EmptyPageMessage("No orders have been made yet.", "Find parking", "/find");
     } else {
       return parkingList.map((parking) => {
-        return <ParkCard key={parking.parkingId} {...parking} />;
+        return <ParkCard editMode={editMode} key={parking.parkingId} {...parking} />;
       });
     }
   }, [parkingList]);

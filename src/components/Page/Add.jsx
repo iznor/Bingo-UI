@@ -65,7 +65,6 @@ function GoogleMapsSearch() {
       chosenLat = lat;
       chosenLng = lng;
       //print lat-lng
-      console.log(chosenLat, chosenLng);
     } catch (error) {
       console.log("😱 Error: ", error);
     }

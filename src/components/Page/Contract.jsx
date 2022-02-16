@@ -44,7 +44,6 @@ function Contract() {
     });
   };
   const handleWhatsapp = () => {
-    console.log(phone);
     window.location.href = `https://wa.me/+972${phone}`;
   };
   const handleShareParkingInWhatsapp = () => {

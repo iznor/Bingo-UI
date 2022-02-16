@@ -23,7 +23,6 @@ function Page() {
   const [auth, setAuth] = useState(true);
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    console.log(isAuthenticated)
     if(isAuthenticated){
       setAuth(true)
     }
@@ -32,7 +31,6 @@ function Page() {
     }
   },[]);
   useEffect(()=>{
-    console.log(auth)
   },[auth])
   return (
     <div className="page-wrap">

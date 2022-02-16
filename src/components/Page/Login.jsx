@@ -25,7 +25,6 @@ function Login({ Login_to_our_project, error }) {
       console.log("SUCCESS");
       console.log(details.email);
       
-      console.log(obj.token.token)
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("token", `Bearer ${obj.token.token}`);
       localStorage.setItem("email", `${details.email}`);

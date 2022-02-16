@@ -103,7 +103,6 @@ function EditForm(props) {
   
 const location = useLocation();
   const  { id }   = location.state;
-  console.log(id);
 
   // const [parking , setParking] = useState("");
   const [price, setPrice] = useState("");
@@ -161,8 +160,6 @@ const location = useLocation();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("the id is");
-    console.log(id);
     const personData = { phoneNumber, firstName, lastName };
     const token = localStorage.getItem("token");
     const datab = await axios({

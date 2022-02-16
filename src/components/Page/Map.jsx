@@ -76,7 +76,6 @@ export default function App() {
       url: "https://bingo-parking.herokuapp.com/api/parkings",
     })
     .then((response) => {
-      console.log("HERE")
       console.log(response)
       const dataMarkers = response.data;
       console.log(dataMarkers);
