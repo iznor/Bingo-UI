@@ -1,16 +1,13 @@
 import "./Manage.scss";
-// import "./Edit.scss";
 import ParkCard from "../ParkCard/ParkCard";
 import Add from "../Edit/EditForm.jsx";
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
-import { set } from "date-fns/esm";
 import EmptyPageMessage from "../EmptyPageMessage/EmptyPageMessage";
 
 function Manage() {
   const [editMode, setEditMode] = useState(true);
   const [parkingList, setParkingList] = useState([]);
-  // const [filteredParking, setFilteredParking] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -27,8 +24,6 @@ function Manage() {
       setParkingList(obj.filter((user) => user.email === email));
     });
   }, []);
-
-
 
   const renderParking = useCallback(() => {
     if(!(parkingList.map((parking)=>{
@@ -48,7 +43,6 @@ function Manage() {
         );
     }else{
     return parkingList.map((parking) => {
-      console.log(parkingList);
         return (
           <ParkCard
             editMode={editMode}
@@ -84,8 +78,6 @@ function Manage() {
   };
 
   const editParking = (parkingId) => {
-    console.log(parkingId);
-
     return <Add parkingid={parkingId} />;
   };
 

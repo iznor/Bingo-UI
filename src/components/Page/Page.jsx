@@ -1,9 +1,6 @@
 import "./Page.scss";
-import App from "../../App";
-import { useContext, useState, useMemo } from "react";
-import react, {useEffect} from "react";
-import { BrowserRouter,Navigate, Route, Routes } from "react-router-dom";
-import ReactDOM from "react-dom";
+import {useEffect, useState} from "react";
+import {Navigate, Route, Routes } from "react-router-dom";
 import LoginFooter from "./footers/Login";
 import LoginHeader from "./headers/Index";
 import Index from "./Index/Index";

@@ -1,5 +1,5 @@
 import BackButton from "./BackButton";
-import { CurrentPath, handleActive } from "../GlobalFunctions"
+import { CurrentPath, handleActive } from "../constants/GlobalFunctions"
 import { Link } from "react-router-dom";
 import "./Header.scss";
 

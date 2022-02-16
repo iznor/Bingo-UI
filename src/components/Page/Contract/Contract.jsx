@@ -1,12 +1,8 @@
-import {BrowserRouter,Link,Switch,Route,useParams,useLocation,useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import {InfoWindow} from "@react-google-maps/api";
+import {Link,useLocation} from "react-router-dom";
 import "./Contract.scss";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 const axios = require("axios");
 
 function Contract() {
-  // const [finalBox, setFinalBox] = useState(false);
   const search = useLocation().search;
   const parkingId = new URLSearchParams(search).get("id");
   const fname = new URLSearchParams(search).get("fname");
@@ -47,7 +43,6 @@ function Contract() {
     window.location.href = `https://wa.me/+972${phone}`;
   };
   const handleShareParkingInWhatsapp = () => {
-    console.log(phone);
     window.location.href = `https://wa.me/send?+972&text=Bingo !      \nI found a parking that might interest you in:      \n${address}.      Start date: ${startDate} 
     \n      End date: ${endDate}.\n      Price: ${price}$\n      You can contact the parking owner - ${fname} ${lname}       in his cellphone: ${phone}`;
   };

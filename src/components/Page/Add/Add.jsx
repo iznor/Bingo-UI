@@ -155,7 +155,7 @@ function Add() {
         active: "True",
       },
     });
-    alert("Success!");
+    console.log("Success!");
     navigate("/find");
   };
 

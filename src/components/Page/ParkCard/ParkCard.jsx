@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import {useState } from 'react';
 import { Link } from "react-router-dom";
-import Add from "../Edit/EditForm.jsx";
 import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md"
-import {CurrentPath} from "../GlobalFunctions"
 import { myApiKey } from "../Map/GoogleMaps";
-import axios from "axios";
 import Geocode from "react-geocode";
 import "../Manage/Manage.scss";
 
@@ -50,7 +47,6 @@ function ParkCard({ editMode, parkingId, person, lastName, phoneNumber, dateStar
     (response) => {
       const res = response.results[0].formatted_address.split(",");
       const address = `${String(res[0])}, ${String(res[1])}`;
-      console.log(res);
       setAddress(()=>address)
     });
     return (

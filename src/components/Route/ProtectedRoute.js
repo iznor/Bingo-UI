@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router-dom";
+import {Route } from "react-router-dom";
 import React from 'react';
 
 const ProtectedRoute = ({isAuthenticated:IsAuthenticated, ...rest }) => (

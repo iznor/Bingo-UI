@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
-import { CurrentPath, handleActive } from "../GlobalFunctions"
+import {handleActive } from "../constants/GlobalFunctions"
 
 const buttonsMain = () => {
   

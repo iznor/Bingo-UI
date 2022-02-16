@@ -1,21 +1,9 @@
-import {
-  BrowserRouter,
-  Link,
-  Switch,
-  Route,
-  useParams,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import "./Orders.scss";
 import ParkCard from "../ParkCard/ParkCard.jsx";
 import EmptyPageMessage from "../EmptyPageMessage/EmptyPageMessage";
 const axios = require("axios");
-
 const loggedInUser = localStorage.getItem("email");
-
-
 
 function Orders() {
   const [parkingList, setParkingList] = useState([]);

@@ -2,33 +2,12 @@ import React from "react";
 import "./Map.scss";
 import { myApiKey } from "./GoogleMaps";
 import axios from "axios";
-import { get } from "mongoose";
-import {BrowserRouter, Link, Switch, Route, useParams} from "react-router-dom";
-// import { useRouter } from "next/router"
-
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
-import { formatRelative } from "date-fns";
-
+import {Link} from "react-router-dom";
+import {GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
+import usePlacesAutocomplete, {getGeocode,getLatLng,} from "use-places-autocomplete";
+import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList,ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import mapStyles from "./mapStyles";
-import { dark } from "./mapStyles";
-import { MdReportGmailerrorred } from "react-icons/md";
+import myParkingIcon from "../../../assets/img/my-spot.svg"
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -40,7 +19,6 @@ const mapContainerStyle = {
   justifyContent: "baseline",
 };
 const options = {
-  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
@@ -76,10 +54,7 @@ export default function App() {
       url: "https://bingo-parking.herokuapp.com/api/parkings",
     })
     .then((response) => {
-      console.log(response)
       const dataMarkers = response.data;
-      console.log(dataMarkers);
-
       dataMarkers.forEach((e, i) => {
         if(e.active.toLowerCase()==="true"){
         const currParkingId = Number(e.parkingId);
@@ -136,7 +111,6 @@ export default function App() {
   return (
     <div className="map-container">
       <Search panTo={panTo} />
-      {/* <Locate panTo={panTo} /> */}
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -162,13 +136,20 @@ export default function App() {
             onClick={() => {
               setSelected(marker);
             }}
-            icon={{
-              // url: "https://www.ariseiip.com/wp-content/uploads/2021/06/parking.svg",
+            icon={ localStorage.getItem('email')===marker.email ? 
+            {
+              url: "https://www.svgrepo.com/show/133735/parking-location.svg",
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+              scaledSize: new window.google.maps.Size(30, 30),            }
+            :
+            {
               url: "https://www.svgrepo.com/show/282135/placeholder-maps-and-location.svg",
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
               scaledSize: new window.google.maps.Size(30, 30),
-            }}
+            }
+          }
           />
         ))}
 
@@ -247,8 +228,6 @@ function Search({ panTo }) {
       radius: 100 * 1000,
     },
   });
-
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
   const handleInput = (e) => {
     setValue(e.target.value);

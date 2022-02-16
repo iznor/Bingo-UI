@@ -54,7 +54,6 @@ const location = useLocation();
       setPhoneNumber(obj.person.phoneNumber);
       setPrice(obj.price);
       // complete deafults dates in form 
-      console.log(new Date(obj.dateStart));
     })
 }, []);
     
@@ -86,7 +85,7 @@ const location = useLocation();
         active: "True",
       },
     });
-    alert("Success!");
+    console.log("Success!");
     navigate("/find");
   };
 

@@ -1,17 +1,10 @@
 import "./Login.scss";
 import React, { useState } from "react";
 import axios from "axios";
-import { get } from "mongoose";
-import { set } from "date-fns/esm";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-function Login({ Login_to_our_project, error }) {
-  //AYHAM => implementation: what happens when user clicks "login"?
+function Login() {
   const [details, setDetails] = useState({ email: "", password: "" });
-  const [NotDefinde, setNotDefinde] = useState({ email: "", password: "" });
-
   const submitHandler = async (e) => {
-    console.log("HI");
     e.preventDefault();
     const datab = await axios({
       headers: {"Access-Control-Allow-Origin": "*"},
@@ -22,15 +15,12 @@ function Login({ Login_to_our_project, error }) {
     const data = JSON.stringify(datab.data);
     const obj = JSON.parse(data);
     if (obj.token) {
-      console.log("SUCCESS");
-      console.log(details.email);
-      
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("token", `Bearer ${obj.token.token}`);
       localStorage.setItem("email", `${details.email}`);
       window.location.pathname = "/find";
     } else {
-      console.log("FAIL");
+      console.log("Failed To Login");
     }
   };
   return (
@@ -38,14 +28,15 @@ function Login({ Login_to_our_project, error }) {
       <form onSubmit={submitHandler}>
         <input
           name="email"
-          type="text"
+          type="email"
           placeholder="E-Mail"
           onChange={(e) => setDetails({ ...details, email: e.target.value })}
           value={details.email}
         />
         <input
           name="Password"
-          type="text"
+          type="password"
+          autoComplete="false"
           placeholder="Password"
           onChange={(e) => setDetails({ ...details, password: e.target.value })}
           value={details.password}
