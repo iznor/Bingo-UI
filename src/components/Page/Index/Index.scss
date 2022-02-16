@@ -1,19 +1,26 @@
 @import '../styleVariables/variables.scss';
 
 .index {
-        display: flex;
+    display: flex;
     flex-direction: column;
     min-width: 100%;
-    row-gap: 30px;
-    min-height: 100vh;
+    height: 100%;
     justify-content: end;
     background-image: url('../../../assets/img/index9.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgb(250, 250, 250);
-    button {
-        min-width: 250px;
+    // margin-top: 95px;
+}
+    .buttons{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // border: 1px red solid;
+        margin-top: 400px;
+        button {
+            min-width: 250px;
         height: 75px;
         border-radius: 50px;
         // background-color: #181818;
@@ -29,5 +36,4 @@
             cursor: pointer;
         }
     }
-
 }

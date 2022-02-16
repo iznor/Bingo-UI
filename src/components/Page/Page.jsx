@@ -35,7 +35,6 @@ function Page() {
           path="/"
           element={
             <>
-              <LoginHeader key={"loginHeader"} />
               <Index />
               <LoginFooter key={"loginFooter"} />
             </>

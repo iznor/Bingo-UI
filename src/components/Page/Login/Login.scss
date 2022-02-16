@@ -26,5 +26,16 @@
 
         }
     }
+    button {
+        min-width: 250px;
+    height: 70px;
+    border-radius: 50px;
+    // background-color: #181818;
+    background-color: $base-yellow;
+    color: #181818;
+    box-shadow: $base-shadow;
+    border: none;
+    font-size: 42px;
+    }
 
 }
