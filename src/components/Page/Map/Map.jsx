@@ -12,14 +12,15 @@ const libraries = ["places"];
 const mapContainerStyle = {
   display: "flex",
   flexDirection: "column",
-  height: "70vh",
+  height: "100%",
   width: "100%",
   maxWidth: "1300px",
   justifyContent: "baseline",
 };
 const options = {
-  disableDefaultUI: false,
+  disableDefaultUI: true,
   zoomControl: false,
+  streetViewControl: true,
   gestureHandling: "greedy",
 };
 const center = {
