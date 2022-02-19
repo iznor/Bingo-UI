@@ -11,9 +11,10 @@ function Orders() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const userOrders = axios({
+    axios({
       headers: {
         authorization: token,
+        headers: { "Access-Control-Allow-Origin": "*" }
       },
       method: "Get",
       url: `https://bingo-parking.herokuapp.com/api/user/${loggedInUser}/orders`,
@@ -21,6 +22,9 @@ function Orders() {
       const data = JSON.stringify(userOrders.data);
       const obj = JSON.parse(data);
       setParkingList(obj);
+    }).catch(err=>{
+      console.log(`Bad server response, refreshing page, ${err}`);
+      window.location.reload();
     });
   }, []);
 

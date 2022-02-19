@@ -2,7 +2,14 @@
 
 .index.login{
     justify-content: center;
-
+    p{
+        display: flex;
+        z-index: 1;
+        color: red;
+        font-size: 22px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
     form {
         display: flex;
         flex-direction: column;
