@@ -1,9 +1,10 @@
 import "./Index.scss";
 import { Link } from "react-router-dom";
-import LoginFooter from "../footers/Login";
+import {useState } from "react";
 import LoginHeader from "../headers/Index";
 
 function Index() {
+  const [errSignup, setErrSignup] = useState("hidden")
   return (
     <div className="index">
       <LoginHeader></LoginHeader>
@@ -11,8 +12,9 @@ function Index() {
         <Link to="/login">
           <button>login</button>
         </Link>
-        <button>signup</button>
+        <button onClick={()=>{setErrSignup("visible"); setTimeout(()=>setErrSignup("hidden"), 4000)}}>signup</button>
       </div>
+        <p style={{visibility:errSignup}}>Signup option will be released soon</p>
     </div>
   );
 }
