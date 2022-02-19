@@ -7,7 +7,6 @@ import {GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api
 import usePlacesAutocomplete, {getGeocode,getLatLng,} from "use-places-autocomplete";
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList,ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import myParkingIcon from "../../../assets/img/my-spot.svg"
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -26,6 +25,18 @@ const center = {
   lat: 32.0901,
   lng: 34.8036,
 };
+
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1; //January is 0!
+let yyyy = today.getFullYear();
+if (dd < 10) {
+  dd = "0" + dd;
+}
+if (mm < 10) {
+  mm = "0" + mm;
+}
+today = yyyy + "-" + mm + "-" + (dd-1);
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
@@ -46,7 +57,7 @@ export default function App() {
   const onMapLoad = React.useCallback((map, post) => {
     mapRef.current = map;
     const token = localStorage.getItem("token");
-    const datab =  axios({
+    axios({
       headers: {
         authorization: token
       },
@@ -98,7 +109,9 @@ export default function App() {
       }});
 
       return;
-    });
+    }).catch(err=>{
+      console.log(`There was a problem loading markers from database: ${err}`);
+    })
   }, []);
 
   const panTo = React.useCallback(({ lat, lng }) => {
@@ -193,25 +206,6 @@ export default function App() {
         ) : null}
       </GoogleMap>
     </div>
-  );
-}
-
-function Locate({ panTo }) {
-  return (
-    <button
-      className="locate"
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
-    ></button>
   );
 }
 

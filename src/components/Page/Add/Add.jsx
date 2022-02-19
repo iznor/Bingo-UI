@@ -100,6 +100,8 @@ function Add() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errMsg, setErrMsg] = useState("hidden");
+  const [brightScreen, setBrightScreen] = useState("1");
 
   const onEndDateChange = (e) => setEndDate(e.target.value);
   const onStartDateChange = (e) => setStartDate(e.target.value);
@@ -139,28 +141,42 @@ function Add() {
     const location = { lat, lng };
     const personData = { phoneNumber, firstName, lastName };
     const token = localStorage.getItem("token");
-    const datab = await axios({
-      method: "Post",
-      headers: {
-        authorization: token
-      },
-      url: "https://bingo-parking.herokuapp.com/api/parkings/",
-      data: {
-        email: localStorage.getItem("email"),
-        price: price,
-        dateEnd: endDate,
-        dateStart: startDate,
-        location: location,
-        person: personData,
-        active: "True",
-      },
-    });
-    console.log("Success!");
-    navigate("/find");
+    let strDt = new Date(startDate);
+    let endDt = new Date(endDate);
+    if (endDt < strDt) {
+      setTimeout(()=>{
+        setErrMsg(()=>"visible");
+        setBrightScreen(()=>"0.2");
+      }, 1500)
+      return;
+    } else {
+      const datab = await axios({
+        method: "Post",
+        headers: {
+          authorization: token,
+        },
+        url: "https://bingo-parking.herokuapp.com/api/parkings/",
+        data: {
+          email: localStorage.getItem("email"),
+          price: price,
+          dateEnd: endDate,
+          dateStart: startDate,
+          location: location,
+          person: personData,
+          active: "True",
+        },
+      });
+      console.log("Success!");
+      navigate("/find");
+    }
   };
 
   return (
-    <div className="edit-page">
+    <>
+      <div className="err-modal" style={{visibility: errMsg}}>
+        <p>😞<br/>Invalid dates </p>
+      </div>
+    <div className="edit-page" style={{opacity: brightScreen}} onClick={()=>{setBrightScreen("1");setErrMsg("hidden")}}>
       <div className="edit-parking">
         <div className="form-editing">
           <section className="input-label-from">
@@ -244,6 +260,7 @@ function Add() {
         </button>
       </div>
     </div>
+    </>
   );
 }
 export default Add;

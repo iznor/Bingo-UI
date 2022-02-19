@@ -21,7 +21,7 @@ function Manage() {
       const data = JSON.stringify(datab.data);
       const obj = JSON.parse(data);
       const email = localStorage.getItem("email");
-      setParkingList(obj.filter((user) => user.email === email));
+      setParkingList(obj.filter((user) => user.email === email && user.active.toLowerCase()==="true"));
     });
   }, []);
 
