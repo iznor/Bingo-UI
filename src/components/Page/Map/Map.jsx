@@ -18,8 +18,9 @@ const mapContainerStyle = {
   justifyContent: "baseline",
 };
 const options = {
-  disableDefaultUI: true,
-  zoomControl: true,
+  disableDefaultUI: false,
+  zoomControl: false,
+  gestureHandling: "greedy",
 };
 const center = {
   lat: 32.0901,
