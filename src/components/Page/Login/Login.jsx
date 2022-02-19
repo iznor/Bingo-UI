@@ -16,24 +16,26 @@ function Login() {
       method: "Post",
       url: "https://bingo-parking.herokuapp.com/api/user/login",
       data: { email: details.email, password: details.password },
-    }).then(data=>{
-    data = JSON.stringify(data.data);
-    const obj = JSON.parse(data);
-    if (obj.token) {
-      localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("token", `Bearer ${obj.token.token}`);
-      localStorage.setItem("email", `${details.email}`);
-      setErrorLogin(()=>"hidden");
-      navigate("/find");
-    } else {
-      console.log("Failed To Login");
-      setErrorLogin(()=>"visible");
-    }
-  }).catch(err=>{
-    console.log(`Failed To Login, ${err}`);
-    setErrorLogin(()=>"visible");
-  })
-  }
+    })
+      .then((data) => {
+        data = JSON.stringify(data.data);
+        const obj = JSON.parse(data);
+        if (obj.token) {
+          localStorage.setItem("isAuthenticated", "true");
+          localStorage.setItem("token", `Bearer ${obj.token.token}`);
+          localStorage.setItem("email", `${details.email}`);
+          setErrorLogin(() => "hidden");
+          navigate("/find");
+        } else {
+          console.log("Failed To Login");
+          setErrorLogin(() => "visible");
+        }
+      })
+      .catch((err) => {
+        console.log(`Failed To Login, ${err}`);
+        setErrorLogin(() => "visible");
+      });
+  };
   return (
     <div className="index login">
       <p style={{ visibility: errorLogin }}>*Incorrect email or password</p>
